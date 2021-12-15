@@ -5,6 +5,7 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './layouts/header/header.component';
 import { FooterComponent } from './layouts/footer/footer.component';
 import { CustomersComponent } from './customers/customers.component';
+import { CustomeService } from './services/custome.service';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,7 @@ import { CustomersComponent } from './customers/customers.component';
   imports: [
     BrowserModule
   ],
-  providers: [],
+  providers: [CustomeService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
