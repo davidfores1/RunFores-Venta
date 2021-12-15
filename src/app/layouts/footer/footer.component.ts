@@ -8,11 +8,15 @@ import { Component, OnInit } from '@angular/core';
 
 export class FooterComponent implements OnInit {
 
-  autor:any = {name:"David", lastName: "Forero"}
+  autor:any
+
 
   constructor() { }
 
   ngOnInit(): void {
+
+    this.autor = {name:"David", lastName: "Forero"}
+    
   }
 
 }
