@@ -6,8 +6,10 @@
         <thead class="table-secondary">
             <tr>
                 <th scope="col">#</th>
+                <th scope="col">Documento</th>
                 <th scope="col">Nombre</th>
                 <th scope="col">Apellido</th>
+                <th scope="col">Teléfono</th>
                 <th scope="col">Email</th>
                 <th scope="col">Fecha de registro</th>
             </tr>
@@ -17,8 +19,10 @@
             <tr *ngFor="let customer of customers">
 
                 <td>{{ customer.id}}</td>
+                <td>{{ customer.document}}</td>
                 <td>{{ customer.name}}</td>
                 <td>{{ customer.lastName}}</td>
+                <td>{{ customer.phone}}</td>
                 <td>{{ customer.email}}</td>
                 <td>{{ customer.createAt}}</td>
 
