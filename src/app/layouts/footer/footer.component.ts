@@ -15,7 +15,7 @@ export class FooterComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.autor = {name:"David", lastName: "Forero"}
+    this.autor = {name:"RunFores.com"}
     
   }
 
