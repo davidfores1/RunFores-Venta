@@ -15,7 +15,11 @@ customers!: Customer[];
 
   ngOnInit(): void {
 
-    this.customers = this.customeService.getCustomer();
+    this.customeService.getCustomer().subscribe(
+      (customers)=>{ 
+        this.customers = customers
+      } 
+    );
     
   }
 

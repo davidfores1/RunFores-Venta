@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Observable, of } from 'rxjs';
 import { CUSTOMERS } from '../customers/customers.json';
 import { Customer } from '../models/customer';
 
@@ -9,7 +10,7 @@ export class CustomeService {
 
   constructor() { }
 
-  getCustomer():Customer[]{
-    return CUSTOMERS;
+  getCustomer():Observable<Customer[]>{
+    return of(CUSTOMERS);
   }
 }
