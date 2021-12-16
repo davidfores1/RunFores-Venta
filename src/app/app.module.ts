@@ -6,6 +6,7 @@ import { HeaderComponent } from './layouts/header/header.component';
 import { FooterComponent } from './layouts/footer/footer.component';
 import { CustomersComponent } from './customers/customers.component';
 import { CustomeService } from './services/custome.service';
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { CustomeService } from './services/custome.service';
     CustomersComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    AppRoutingModule
   ],
   providers: [CustomeService],
   bootstrap: [AppComponent]
