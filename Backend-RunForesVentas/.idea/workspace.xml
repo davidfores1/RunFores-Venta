@@ -4,11 +4,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8360978a-3d31-4e5e-a20a-936b095a9ad6" name="Changes" comment="" />
+    <list default="true" id="bd620d72-1ee0-4af9-b438-1852ad8a1923" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
@@ -16,16 +25,20 @@
   <component name="JpbToolWindowState">
     <option name="myId2FirstActivated">
       <map>
+        <entry key="com.haulmont.jpb.jpaInspector" value="true" />
+        <entry key="com.haulmont.jpb.jpaPalette" value="true" />
         <entry key="com.haulmont.jpb.jpaStructure" value="true" />
       </map>
     </option>
     <option name="myId2Visible">
       <map>
-        <entry key="com.haulmont.jpb.jpaStructure" value="true" />
+        <entry key="com.haulmont.jpb.jpaInspector" value="false" />
+        <entry key="com.haulmont.jpb.jpaPalette" value="false" />
+        <entry key="com.haulmont.jpb.jpaStructure" value="false" />
       </map>
     </option>
   </component>
-  <component name="ProjectId" id="22q9snzIY9GpAJ0qMmyyX0xccWz" />
+  <component name="ProjectId" id="22qGtwayHpPKOUixIvCv32aUoTv" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -40,13 +53,12 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="nodejs_package_manager_path" value="npm" />
   </component>
   <component name="RunManager">
-    <configuration name="SpringBootBackendVentasApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
-      <module name="spring-boot-backend-ventas" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.springboot.backend.ventas.SpringBootBackendVentasApplication" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="SHORTEN_COMMAND_LINE" value="NONE" />
+    <configuration name="BackendRunForesVentasApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="Backend-RunForesVentas" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.backendrunfores.ventas.BackendRunForesVentasApplication" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -55,22 +67,18 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="8360978a-3d31-4e5e-a20a-936b095a9ad6" name="Changes" comment="" />
-      <created>1640554469643</created>
+      <changelist id="bd620d72-1ee0-4af9-b438-1852ad8a1923" name="Changes" comment="" />
+      <created>1640557924729</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1640554469643</updated>
-      <workItem from="1640554471740" duration="1812000" />
-      <workItem from="1640556480529" duration="129000" />
-      <workItem from="1640556666821" duration="461000" />
-      <workItem from="1640557650470" duration="255000" />
+      <updated>1640557924729</updated>
+      <workItem from="1640557928126" duration="45000" />
+      <workItem from="1640635400214" duration="5581000" />
+      <workItem from="1640641414178" duration="451000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
-  </component>
-  <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/spring_boot_backend_ventas$SpringBootBackendVentasApplication.ic" NAME="SpringBootBackendVentasApplication Coverage Results" MODIFIED="1640555021488" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>
