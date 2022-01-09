@@ -12,13 +12,11 @@ public class Customer implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column(nullable = false, unique = true, length = 10)
-    private Integer document;
-    @Column(nullable = false, length = 60)
+    private Long document;
+    @Column(nullable = false, length = 100)
     private String name;
-    @Column(nullable = false, length = 60)
-    private String lastName;
     @Column(nullable = true, length = 10)
-    private Integer phone;
+    private Long phone;
     @Column(nullable = true, length = 40)
     private String email;
 
@@ -37,11 +35,11 @@ public class Customer implements Serializable {
         this.id = id;
     }
 
-    public Integer getDocument() {
+    public Long getDocument() {
         return document;
     }
 
-    public void setDocument(Integer document) {
+    public void setDocument(Long document) {
         this.document = document;
     }
 
@@ -53,19 +51,11 @@ public class Customer implements Serializable {
         this.name = name;
     }
 
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    public Integer getPhone() {
+    public Long getPhone() {
         return phone;
     }
 
-    public void setPhone(Integer phone) {
+    public void setPhone(Long phone) {
         this.phone = phone;
     }
 

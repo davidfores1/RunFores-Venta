@@ -21,6 +21,13 @@ public class CustomerRestController {
         return customerService.findAll();
     }
 
+    @GetMapping("/clientes/{id}")
+    public Customer searchId(@PathVariable Long id) {
+
+        return customerService.findById(id);
+
+    }
+
     @PostMapping("clientes")
     @ResponseStatus(HttpStatus.CREATED)
     public Customer create(@RequestBody Customer customer) {
