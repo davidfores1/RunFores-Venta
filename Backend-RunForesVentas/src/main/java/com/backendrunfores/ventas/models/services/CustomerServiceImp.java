@@ -9,10 +9,10 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 @Service
-public class CustomerServiceImp implements ICustomerService{
+public class CustomerServiceImp implements ICustomerService {
 
     @Autowired
-    private ICustomerDao customerDao;
+    ICustomerDao customerDao;
 
     @Override
     @Transactional(readOnly = true)

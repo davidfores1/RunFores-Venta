@@ -95,11 +95,12 @@ public class Customer implements Serializable {
 
 
     @PrePersist
-    private void antesDePersistir(){
+    private void antesDePersistir() {
         this.createAt = LocalDateTime.now();
     }
+
     @PreUpdate
-    private void antesDeUpdate(){
+    private void antesDeUpdate() {
 
         this.updateAt = LocalDateTime.now();
     }

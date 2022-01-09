@@ -14,47 +14,38 @@ import java.util.List;
 public class CustomerRestController {
 
     @Autowired
-    private ICustomerService customerService;
+    ICustomerService customerService;
 
     @GetMapping("/clientes")
-    public List<Customer>index(){
+    public List<Customer> index() {
         return customerService.findAll();
     }
 
-    @GetMapping("/clientes/{id}")
-    public Customer show(@PathVariable long id){
-    return customerService.findById(id);
-    }
-
-    @PostMapping("/clientes")
+    @PostMapping("clientes")
     @ResponseStatus(HttpStatus.CREATED)
-    public Customer show(@RequestBody Customer customer){
+    public Customer create(@RequestBody Customer customer) {
+
         return customerService.save(customer);
     }
 
-    @PutMapping("/clientes/{id}")
+    @PutMapping("clientes/{id}")
     @ResponseStatus(HttpStatus.CREATED)
-    public Customer update(@RequestBody Customer customer, @PathVariable Long id){
+    public Customer update(@RequestBody Customer customer, @PathVariable Long id) {
 
-        Customer customerUpdate = customerService.findById(id);
+        Customer updateCustomer = customerService.findById(id);
 
-        customerUpdate.setDocument(customerUpdate.getDocument());
-        customerUpdate.setName(customerUpdate.getName());
-        customerUpdate.setLastName(customerUpdate.getLastName());
-        customerUpdate.setPhone(customerUpdate.getPhone());
-        customerUpdate.setEmail(customerUpdate.getEmail());
+        updateCustomer.setDocument(customer.getDocument());
+        updateCustomer.setName(customer.getName());
+        updateCustomer.setPhone(customer.getPhone());
+        updateCustomer.setEmail(customer.getEmail());
 
-        return  customerService.save(customer);
-
+        return customerService.save(updateCustomer);
     }
 
     @DeleteMapping("/clientes/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void delete(@PathVariable Long id){
-
+    public void delete(@PathVariable Long id) {
         customerService.delete(id);
-
     }
-
 
 }
