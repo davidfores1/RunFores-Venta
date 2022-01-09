@@ -7,9 +7,10 @@
     <list default="true" id="bd620d72-1ee0-4af9-b438-1852ad8a1923" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/backendrunfores/ventas/controllers/CustomerRestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/backendrunfores/ventas/controllers/CustomerRestController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend-RunForesVentas/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend-RunForesVentas/src/app/app.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend-RunForesVentas/src/app/services/custome.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend-RunForesVentas/src/app/services/custome.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend-RunForesVentas/src/environments/environment.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend-RunForesVentas/src/environments/environment.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/backendrunfores/ventas/models/entity/Customer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/backendrunfores/ventas/models/entity/Customer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/backendrunfores/ventas/models/services/CustomerServiceImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/backendrunfores/ventas/models/services/CustomerServiceImp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/backendrunfores/ventas/models/services/ICustomerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/backendrunfores/ventas/models/services/ICustomerService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -84,6 +85,11 @@
       <workItem from="1640816611726" duration="1220000" />
       <workItem from="1641157646784" duration="1531000" />
       <workItem from="1641218140321" duration="6902000" />
+      <workItem from="1641244020703" duration="963000" />
+      <workItem from="1641245809469" duration="5000" />
+      <workItem from="1641245955791" duration="140000" />
+      <workItem from="1641655798275" duration="14796000" />
+      <workItem from="1641690269424" duration="1164000" />
     </task>
     <servers />
   </component>
