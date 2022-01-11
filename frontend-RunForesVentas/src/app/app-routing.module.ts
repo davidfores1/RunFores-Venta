@@ -1,11 +1,13 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { CustomersComponent } from './customers/customers.component';
+import { FormComponent } from './customers/form.component';
 
 const routes:Routes =[
 
-  {path: '', redirectTo: '/customers', pathMatch: 'full'},
-  {path: 'customers', component: CustomersComponent}
+  {path: '', redirectTo: '/clientes', pathMatch: 'full'},
+  {path: 'clientes', component: CustomersComponent},
+  {path: 'clientes/form', component:FormComponent}
 
 ];
 
