@@ -36,16 +36,26 @@ export class FormComponent implements OnInit {
   public createCustomer():void{
 
     this.customerService.create(this.customer).subscribe(
-      Response =>{
+      response =>{
         this.router.navigate(['/clientes'])
         Swal.fire(
           'Nuevo Cliente!',
-          `${Response.name} creado con éxito`, 'success'
+          `Cliente ${response.name} creado con éxito`, 'success'
         )
       } 
     )
     
 
+  }
+
+  updateCustomer():void{
+    this.customerService.update(this.customer).subscribe(response =>{
+       this.router.navigate(['/clientes'])
+       Swal.fire(
+        'Cliente Actualizado!',
+        `Cliente ${response.name} actualizado con éxito`, 'success'
+      )
+    })
   }
 
 }

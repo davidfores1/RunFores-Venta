@@ -28,4 +28,8 @@ export class CustomeService {
     return this.http.get<Customer>(`${environment.apiUrl}${this.routeCliente}${id}`)
   }
 
+  update(customer: Customer): Observable<Customer>{
+    return this.http.put<Customer>(`${environment.apiUrl}${this.routeCliente}${customer.id}`, customer,{headers: this.httpHeaders});
+  }
+
 }
