@@ -20,9 +20,9 @@
         </thead>
         <tbody>
 
-            <tr *ngFor="let customer of customers" >
+            <tr *ngFor="let customer of customers; let i = index">
 
-                <td>{{ customer.id }}</td>
+                <td>{{ i + 1 }}</td>
                 <td>{{ customer.document}}</td>
                 <td>{{ customer.name}}</td>
                 <td>{{ customer.phone}}</td>
