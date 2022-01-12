@@ -32,4 +32,8 @@ export class CustomeService {
     return this.http.put<Customer>(`${environment.apiUrl}${this.routeCliente}${customer.id}`, customer,{headers: this.httpHeaders});
   }
 
+  delete(id:number):Observable<Customer>{
+    return this.http.delete<Customer>(`${environment.apiUrl}${this.routeCliente}${id}`,{headers: this.httpHeaders})
+  }
+
 }
