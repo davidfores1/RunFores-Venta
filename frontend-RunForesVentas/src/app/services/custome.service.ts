@@ -11,15 +11,21 @@ import { environment } from 'src/environments/environment';
 export class CustomeService {
 
   private httpHeaders = new HttpHeaders({'content-Type': 'application/json'})
-
+  private routeCliente = "/clientes/";
+  
   constructor(private http: HttpClient) { }
 
-  getCustomer():Observable<Customer[]>{
+  getCustomers():Observable<Customer[]>{
     //return of(CUSTOMERS);
-    return this.http.get<Customer[]>(environment.apiUrl + '/clientes')
+    return this.http.get<Customer[]>(environment.apiUrl + this.routeCliente)
   }
 
   create(customer:Customer):Observable<Customer>{
-    return this.http.post<Customer>(environment.apiUrl + '/clientes', customer,{headers: this.httpHeaders});
+    return this.http.post<Customer>(environment.apiUrl + this.routeCliente, customer,{headers: this.httpHeaders});
   }
+
+  getCustomer(id: any):Observable<Customer>{
+    return this.http.get<Customer>(`${environment.apiUrl}${this.routeCliente}${id}`)
+  }
+
 }

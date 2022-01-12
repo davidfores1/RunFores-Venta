@@ -10,19 +10,14 @@ import { CustomeService } from '../services/custome.service';
 export class CustomersComponent implements OnInit {
 
   customers!: Customer[];
-  customers1!: Customer[];
-  numberCustomer!: any;
 
   constructor(private customeService: CustomeService) { }
 
   ngOnInit(): void {
 
-    this.customeService.getCustomer().subscribe(
+    this.customeService.getCustomers().subscribe(
       (customers) => {
         this.customers = customers;
-        this.numberCustomer = this.customers.length;
-
-
       }
       
     );

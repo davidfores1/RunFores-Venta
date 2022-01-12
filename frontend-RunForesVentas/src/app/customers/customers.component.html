@@ -16,6 +16,7 @@
                 <th scope="col">Teléfono</th>
                 <th scope="col">Email</th>
                 <th scope="col">Fecha de registro</th>
+                <th scope="col">Editar</th>
             </tr>
         </thead>
         <tbody>
@@ -28,6 +29,9 @@
                 <td>{{ customer.phone}}</td>
                 <td>{{ customer.email}}</td>
                 <td>{{ customer.createAt}}</td>
+                <td>
+                    <button [routerLink]="['/clientes/form',customer.id]" class="btn btn-success">Editar</button>
+                </td>
 
             </tr>
 
