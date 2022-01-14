@@ -13,11 +13,11 @@ public class Customer implements Serializable {
     private Long id;
     @Column(nullable = false, unique = true, length = 10)
     private Long document;
-    @Column(length = 100, nullable = false )
+    @Column(length = 40, nullable = false )
     private String name;
     @Column(nullable = true, length = 10)
     private Long phone;
-    @Column(nullable = true, length = 40)
+    @Column(nullable = true, length = 50)
     private String email;
 
     @Column(name = "create_at")

@@ -5,9 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bd620d72-1ee0-4af9-b438-1852ad8a1923" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/backendrunfores/ventas/models/entity/Customer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/backendrunfores/ventas/models/entity/Customer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend-RunForesVentas/src/app/services/custome.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend-RunForesVentas/src/app/services/custome.service.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -95,7 +93,7 @@
       <workItem from="1641989021057" duration="2084000" />
       <workItem from="1642103157662" duration="10322000" />
       <workItem from="1642172515130" duration="643000" />
-      <workItem from="1642174290532" duration="2302000" />
+      <workItem from="1642174290532" duration="3120000" />
     </task>
     <servers />
   </component>
