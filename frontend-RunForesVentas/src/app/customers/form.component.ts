@@ -40,7 +40,7 @@ export class FormComponent implements OnInit {
         this.router.navigate(['/clientes'])
         Swal.fire(
           'Nuevo Cliente!',
-          `Cliente ${response.name} creado con éxito`, 'success'
+          `${response.mensaje}: ${response.customer.name}`, 'success'
         )
       } 
     )
@@ -53,7 +53,7 @@ export class FormComponent implements OnInit {
        this.router.navigate(['/clientes'])
        Swal.fire(
         'Cliente Actualizado!',
-        `Cliente ${response.name} actualizado con éxito`, 'success'
+        `${response.mensaje}: ${response.customer.name}`, 'success'
       )
     })
   }
