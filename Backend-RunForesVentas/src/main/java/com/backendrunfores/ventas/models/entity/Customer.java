@@ -1,6 +1,9 @@
 package com.backendrunfores.ventas.models.entity;
 
+import org.hibernate.validator.constraints.Range;
+
 import javax.persistence.*;
+import javax.validation.constraints.*;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
@@ -11,13 +14,23 @@ public class Customer implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(nullable = false, unique = true, length = 10)
-    private Long document;
-    @Column(length = 40, nullable = false )
+
+    @NotEmpty
+    @Size(min = 8, max = 10)
+    @Column(nullable = false, unique = true)
+    private String document;
+
+    @NotEmpty
+    @Size(min = 7, max = 40)
+    @Column(nullable = false)
     private String name;
-    @Column(nullable = true, length = 10)
-    private Long phone;
-    @Column(nullable = true, length = 50)
+
+    @Size(min = 7, max = 10)
+    @Column(nullable = true)
+    private String phone;
+
+    @Email
+    @Column(nullable = true)
     private String email;
 
     @Column(name = "create_at")
@@ -35,11 +48,11 @@ public class Customer implements Serializable {
         this.id = id;
     }
 
-    public Long getDocument() {
+    public String getDocument() {
         return document;
     }
 
-    public void setDocument(Long document) {
+    public void setDocument(String document) {
         this.document = document;
     }
 
@@ -51,11 +64,11 @@ public class Customer implements Serializable {
         this.name = name;
     }
 
-    public Long getPhone() {
+    public String getPhone() {
         return phone;
     }
 
-    public void setPhone(Long phone) {
+    public void setPhone(String phone) {
         this.phone = phone;
     }
 
