@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Customer } from '../models/customer';
 import { CustomeService } from '../services/custome.service';
 import Swal from 'sweetalert2'
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-form',
@@ -13,7 +14,9 @@ export class FormComponent implements OnInit {
   customer:Customer = new Customer();
   titulo:string = "Crear Cliente";
 
-  constructor(private customerService: CustomeService, private router: Router, private activatedRoute: ActivatedRoute) { }
+  errores!: string[]
+
+  constructor(private customerService: CustomeService, private router: Router, private activatedRoute: ActivatedRoute, private toastr: ToastrService) { }
 
   ngOnInit(): void {
     this.selectCustomer()
@@ -42,6 +45,18 @@ export class FormComponent implements OnInit {
           'Nuevo Cliente!',
           `${response.mensaje}: ${response.customer.name}`, 'success'
         )
+      },
+      err =>{
+
+        this.errores = err.error.error as string[];
+        console.log(err.error.error);
+        
+        // this.toastr.error(JSON.stringify(err.error.error),JSON.stringify(err.status),{
+        //   //positionClass:'toast-top-center',
+        //   timeOut:2000,
+        //   progressBar:true
+        // });
+
       } 
     )
     
@@ -55,7 +70,20 @@ export class FormComponent implements OnInit {
         'Cliente Actualizado!',
         `${response.mensaje}: ${response.customer.name}`, 'success'
       )
-    })
+    },
+      err =>{
+
+        this.errores = err.error.error as string[];
+          console.log(err.error.error);
+          
+        // this.toastr.error(JSON.stringify(err.error.errors),JSON.stringify(err.status),{
+        //   //positionClass:'toast-top-center',
+        //   timeOut:2000,
+        //   progressBar:true
+        // });
+
+      } 
+    )
   }
 
 }

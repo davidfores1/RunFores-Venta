@@ -22,17 +22,6 @@ export class CustomeService {
     return this.http.get<Customer[]>(environment.apiUrl + this.routeCliente)
   }
 
-  create(customer:Customer):Observable<any>{
-    return this.http.post<any>(environment.apiUrl + this.routeCliente, customer,{headers: this.httpHeaders}).pipe(
-      catchError(e => {
-        
-        Swal.fire('Error al crear al cliente', e.error.mensaje, 'error');
-        return throwError(e);
-        
-      })
-    );
-  }
-
   getCustomer(id: any):Observable<Customer>{
     return this.http.get<Customer>(`${environment.apiUrl}${this.routeCliente}${id}`).pipe(
       catchError(e =>{
@@ -43,9 +32,28 @@ export class CustomeService {
     );
   }
 
+  create(customer:Customer):Observable<any>{
+    return this.http.post<any>(environment.apiUrl + this.routeCliente, customer,{headers: this.httpHeaders}).pipe(
+      catchError(e => {
+
+        if(e.status == 400){
+          return throwError(e);
+        }
+        
+        Swal.fire('Error al crear al cliente', e.error.mensaje, 'error');
+        return throwError(e);
+        
+      })
+    );
+  }
+
   update(customer: Customer): Observable<any>{
     return this.http.put<any>(`${environment.apiUrl}${this.routeCliente}${customer.id}`, customer,{headers: this.httpHeaders}).pipe(
       catchError(e => {
+        
+        if(e.status == 400){
+          return throwError(e);
+        }
         
         Swal.fire('Error al editar al cliente', e.error.mensaje, 'error');
         return throwError(e);

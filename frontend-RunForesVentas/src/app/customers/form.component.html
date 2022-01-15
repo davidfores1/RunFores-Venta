@@ -3,12 +3,20 @@
     <div class="card-header">{{titulo}}</div>
     <div class="card-body">
 
-        <form #customerForm="ngForm">
+
+        <ul class="alert alert-danger" *ngIf="errores?.length > 0">
+            <li *ngFor="let err of errores">
+                {{ err }}
+
+            </li>
+        </ul>
+
+        <form><!--  #customerForm="ngForm" -->
             <div class="form-group row">
                 <label for="document" class="col-form-label col-sm-2">Documento:</label>
                 <div class="col-sm-6">
-                    <input type="text" class="form-control" [(ngModel)]="customer.document" name="document" required
-                        minlength="8" maxlength="10" #document="ngModel">
+                    <input type="text" class="form-control" [(ngModel)]="customer.document" name="document"
+                     #document="ngModel">
 
                     <div class="alert alert-danger" *ngIf="document.invalid && (document.$dirty || document.touched)">
                         <div *ngIf="document.errors.required">
@@ -28,9 +36,10 @@
             <div class="form-group row">
                 <label for="name" class="col-form-label col-sm-2">Nombre:</label>
                 <div class="col-sm-6">
-                    <input type="text" class="form-control" [(ngModel)]="customer.name" name="name" required
-                        minlength="8" maxlength="40" #name="ngModel">
-                    <div class="alert alert-danger" *ngIf="name.invalid && (name.$dirty || name.touched)">
+                    <input type="text" class="form-control" [(ngModel)]="customer.name" name="name" 
+                         #name="ngModel">  <!--required minlength="8" maxlength="40" -->
+
+                    <!-- <div class="alert alert-danger" *ngIf="name.invalid && (name.$dirty || name.touched)">
                         <div *ngIf="name.errors.required">
                             Documento requerido
                         </div>
@@ -41,16 +50,16 @@
                             El documento debe tener maximo 40 caracteres
                         </div>
 
-                    </div>
+                    </div> -->
 
                 </div>
             </div>
             <div class="form-group row">
                 <label for="phone" class="col-form-label col-sm-2">Telefono:</label>
                 <div class="col-sm-6">
-                    <input type="text" class="form-control" [(ngModel)]="customer.phone" name="phone" minlength="7"
-                        maxlength="10" #phone="ngModel">
-                    <div class="alert alert-danger" *ngIf="phone.invalid && (phone.$dirty || phone.touched)">
+                    <input type="text" class="form-control" [(ngModel)]="customer.phone" name="phone" #phone="ngModel"><!-- minlength="8" maxlength="40" -->
+
+                    <!-- <div class="alert alert-danger" *ngIf="phone.invalid && (phone.$dirty || phone.touched)">
 
                         <div *ngIf="phone.errors.minlength">
                             El telefono debe tener al menos 7 caracteres
@@ -59,23 +68,23 @@
                             El telefono debe tener maximo 10 caracteres
                         </div>
 
-                    </div>
+                    </div> -->
 
                 </div>
             </div>
             <div class="form-group row">
                 <label for="email" class="col-form-label col-sm-2">Correo:</label>
                 <div class="col-sm-6">
-                    <input type="email" class="form-control" [(ngModel)]="customer.email" name="email" email
-                        #email="ngModel">
+                    <input type="email" class="form-control" [(ngModel)]="customer.email" name="email"
+                        #email="ngModel"><!-- email -->
 
-                    <div class="alert alert-danger" *ngIf="email.invalid && (email.$dirty || email.touched)">
+                    <!-- <div class="alert alert-danger" *ngIf="email.invalid && (email.$dirty || email.touched)">
 
                         <div *ngIf="email.errors.email">
                             El correo debe tener un formato valido
                         </div>
 
-                    </div>
+                    </div> -->
 
                 </div>
             </div>
@@ -83,10 +92,10 @@
             <div class="form-group row">
                 <div class="col-sm-6">
                     <button class="btn btn-primary" role="button" (click)='createCustomer()'
-                        *ngIf="!customer.id else elseBlock" [disabled]="!customerForm.form.valid">Crear</button>
+                        *ngIf="!customer.id else elseBlock">Crear</button><!-- [disabled]="!customerForm.form.valid" -->
 
                     <ng-template #elseBlock>
-                        <button class="btn btn-primary" role="button" (click)='updateCustomer()' [disabled]="!customerForm.form.valid">Editar</button>
+                        <button class="btn btn-primary" role="button" (click)='updateCustomer()'>Editar</button> <!-- [disabled]="!customerForm.form.valid" -->
                     </ng-template>
                 </div>
             </div>

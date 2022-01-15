@@ -3,6 +3,8 @@ import Swal from 'sweetalert2';
 import { Customer } from '../models/customer';
 import { CustomeService } from '../services/custome.service';
 
+
+
 @Component({
   selector: 'app-customers',
   templateUrl: './customers.component.html',
