@@ -24,7 +24,7 @@ export class CustomeService {
       map(response =>{
         let customers = response as Customer[];
         return customers.map(customer =>{
-          customer.createAt = formatDate(customer.createAt, 'dd/MM/yyyy', 'en-US')
+          customer.createAt = formatDate(customer.createAt, 'short', 'en-US')
           return customer;
         });
       })

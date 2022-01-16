@@ -4,12 +4,12 @@
     <div class="card-body">
 
 
-        <ul class="alert alert-danger" *ngIf="errores?.length > 0">
+        <!-- <ul class="alert alert-danger" *ngIf="errores?.length > 0">
             <li *ngFor="let err of errores">
                 {{ err }}
 
             </li>
-        </ul>
+        </ul> -->
 
         <form><!--  #customerForm="ngForm" -->
             <div class="form-group row">
@@ -18,7 +18,7 @@
                     <input type="text" class="form-control" [(ngModel)]="customer.document" name="document"
                      #document="ngModel">
 
-                    <div class="alert alert-danger" *ngIf="document.invalid && (document.$dirty || document.touched)">
+                    <!-- <div class="alert alert-danger" *ngIf="document.invalid && (document.$dirty || document.touched)">
                         <div *ngIf="document.errors.required">
                             Documento requerido
                         </div>
@@ -29,7 +29,7 @@
                             Documento debe tener maximo 10 caracteres
                         </div>
 
-                    </div>
+                    </div> -->
 
                 </div>
             </div>
