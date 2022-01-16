@@ -1,11 +1,12 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
-import { catchError } from 'rxjs/operators';
+import { catchError, map } from 'rxjs/operators';
 import { Customer } from '../models/customer';
 import { environment } from 'src/environments/environment';
 import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
+import { formatDate } from '@angular/common';
 
 @Injectable({
   providedIn: 'root'
@@ -19,7 +20,15 @@ export class CustomeService {
 
   getCustomers():Observable<Customer[]>{
     //return of(CUSTOMERS);
-    return this.http.get<Customer[]>(environment.apiUrl + this.routeCliente)
+    return this.http.get(environment.apiUrl + this.routeCliente).pipe(
+      map(response =>{
+        let customers = response as Customer[];
+        return customers.map(customer =>{
+          customer.createAt = formatDate(customer.createAt, 'dd/MM/yyyy', 'en-US')
+          return customer;
+        });
+      })
+    )
   }
 
   getCustomer(id: any):Observable<Customer>{

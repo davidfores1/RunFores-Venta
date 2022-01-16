@@ -4,5 +4,5 @@ export class Customer {
     name!:String;
     phone!:number;
     email!:String;
-    createAt!:String;
+    createAt!:string;
 }
