@@ -18,15 +18,17 @@ export class CustomeService {
   
   constructor(private http: HttpClient, private router: Router) { }
 
-  getCustomers():Observable<Customer[]>{
+  getCustomers(page: number):Observable<any>{
     //return of(CUSTOMERS);
-    return this.http.get(environment.apiUrl + this.routeCliente).pipe(
-      map(response =>{
-        let customers = response as Customer[];
-        return customers.map(customer =>{
-          customer.createAt = formatDate(customer.createAt, 'short', 'en-US')
+    return this.http.get(environment.apiUrl + this.routeCliente + 'page/' + page).pipe(
+      map((response: any) =>{
+
+        (response.content as Customer[]).map(customer =>{
+          
+          //customer.createAt = formatDate(customer.createAt, 'short', 'en-US')
           return customer;
         });
+        return response
       })
     )
   }

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import Swal from 'sweetalert2';
 import { Customer } from '../models/customer';
 import { CustomeService } from '../services/custome.service';
@@ -14,15 +15,25 @@ export class CustomersComponent implements OnInit {
 
   customers!: Customer[];
 
-  constructor(private customeService: CustomeService) { }
+  constructor(private customeService: CustomeService,private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
 
-    this.customeService.getCustomers().subscribe(
-      (customers) => {
-        this.customers = customers;
+    this.activatedRoute.paramMap.subscribe(params => {
+      let page:number = +params.get('page')! | 0;
+
+      if(!page){
+        page = 0;
       }
 
+    this.customeService.getCustomers(page).subscribe(
+      (response) => {
+        this.customers = response.content as Customer[];
+      }
+
+    );
+
+  }
     );
 
   }

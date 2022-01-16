@@ -3,6 +3,8 @@ package com.backendrunfores.ventas.models.services;
 import com.backendrunfores.ventas.models.dao.ICustomerDao;
 import com.backendrunfores.ventas.models.entity.Customer;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -18,6 +20,12 @@ public class CustomerServiceImp implements ICustomerService {
     @Transactional(readOnly = true)
     public List<Customer> findAll() {
         return (List<Customer>) customerDao.findAll();
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public Page<Customer> findAll(Pageable pageable) {
+        return customerDao.findAll(pageable);
     }
 
     @Override
