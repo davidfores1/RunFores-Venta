@@ -1,7 +1,7 @@
 <ul *ngIf="paginas?.length > 0" class="pagination">
-    <li *ngFor="let pagina of paginas">
+    <li class="page-item" *ngFor="let pagina of paginas">
 
-        {{pagina}}
+        <a class="page-link" [routerLink]="['/clientes/page', pagina-1]">{{pagina}}</a>
 
     </li>
 </ul>
