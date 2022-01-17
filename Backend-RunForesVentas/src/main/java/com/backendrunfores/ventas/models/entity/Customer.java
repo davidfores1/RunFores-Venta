@@ -17,7 +17,7 @@ public class Customer implements Serializable {
 
     @NotEmpty
     @Size(min = 8, max = 10)
-    @Column(nullable = false, unique = true)
+    @Column(nullable = false, unique = false)
     private String document;
 
     @NotEmpty
