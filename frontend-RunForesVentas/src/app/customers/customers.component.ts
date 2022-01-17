@@ -14,27 +14,26 @@ import { CustomeService } from '../services/custome.service';
 export class CustomersComponent implements OnInit {
 
   customers!: Customer[];
+  paginator:any;
 
-  constructor(private customeService: CustomeService,private activatedRoute: ActivatedRoute) { }
+  constructor(private customeService: CustomeService, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
 
     this.activatedRoute.paramMap.subscribe(params => {
-      let page:number = +params.get('page')! | 0;
+      let page: number = +params.get('page')! | 0;
 
-      if(!page){
+      if (!page) {
         page = 0;
       }
 
-    this.customeService.getCustomers(page).subscribe(
-      (response) => {
-        this.customers = response.content as Customer[];
-      }
+      this.customeService.getCustomers(page).subscribe(
+        (response) => {
+          this.customers = response.content as Customer[];
+          this.paginator = response; 
+        });
 
-    );
-
-  }
-    );
+    });
 
   }
 
