@@ -31,6 +31,9 @@ export class CustomersComponent implements OnInit {
         (response) => {
           this.customers = response.content as Customer[];
           this.paginator = response; 
+
+          console.log(this.paginator);
+          
         });
 
     });
