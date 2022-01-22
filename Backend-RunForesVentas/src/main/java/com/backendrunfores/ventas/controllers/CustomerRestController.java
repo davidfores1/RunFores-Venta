@@ -65,7 +65,11 @@ public class CustomerRestController {
     @PostMapping("clientes")
     public ResponseEntity<?> create(@Valid @RequestBody Customer customer, BindingResult result) {
 
+        Customer byDocument = (Customer) customerService.byDocument(customer.getDocument());
+
         Customer newCustomer = null;
+
+
         Map<String, Object> response = new HashMap<>();
 
         if (result.hasErrors()) {
@@ -77,6 +81,12 @@ public class CustomerRestController {
 
             response.put("error", errors);
             return new ResponseEntity<Map<String, Object>>(response, HttpStatus.BAD_REQUEST);
+        }
+
+        if (byDocument != null) {
+
+            response.put("mensaje", "El número de documento ya existe");
+            return new ResponseEntity<Map<String, Object>>(response, HttpStatus.NOT_FOUND);
         }
 
         try {

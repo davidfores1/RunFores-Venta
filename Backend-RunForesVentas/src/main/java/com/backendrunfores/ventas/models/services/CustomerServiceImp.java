@@ -45,4 +45,9 @@ public class CustomerServiceImp implements ICustomerService {
     public void delete(Long id) {
         customerDao.deleteById(id);
     }
+
+    @Override
+    public Customer byDocument(String document) {
+        return customerDao.findByDocument(document);
+    }
 }

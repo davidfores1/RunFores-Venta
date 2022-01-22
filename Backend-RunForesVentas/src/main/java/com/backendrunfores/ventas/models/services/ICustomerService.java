@@ -18,4 +18,6 @@ public interface ICustomerService {
 
     public void delete(Long id);
 
+    public Customer byDocument(String document);
+
 }
