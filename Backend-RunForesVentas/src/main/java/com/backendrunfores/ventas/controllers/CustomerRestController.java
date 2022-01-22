@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.Valid;
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -161,6 +162,18 @@ public class CustomerRestController {
 
         try {
 
+            Customer customer = customerService.findById(id);
+            String previousPhotoName = customer.getPhoto();
+            
+            if(previousPhotoName != null && previousPhotoName.length()>0){
+                Path previousRoutePhoto = Paths.get("uploads").resolve(previousPhotoName).toAbsolutePath();
+                File previousFilePhoto = previousRoutePhoto.toFile();
+
+                if(previousFilePhoto.exists() && previousFilePhoto.canRead()){
+                    previousFilePhoto.delete();
+                }
+            }
+
             customerService.delete(id);
 
         } catch (DataAccessException e) {
@@ -189,6 +202,17 @@ public class CustomerRestController {
                 response.put("mensaje", "Error al subir la imagen del cliente");
                 response.put("error", e.getMessage().concat(": ").concat(e.getCause().getMessage()));
                 return new ResponseEntity<Map<String, Object>>(response, HttpStatus.INTERNAL_SERVER_ERROR);
+            }
+
+            String previousPhotoName = customer.getPhoto();
+
+            if(previousPhotoName != null && previousPhotoName.length()>0){
+                Path previousRoutePhoto = Paths.get("uploads").resolve(previousPhotoName).toAbsolutePath();
+                File previousFilePhoto = previousRoutePhoto.toFile();
+
+                if(previousFilePhoto.exists() && previousFilePhoto.canRead()){
+                    previousFilePhoto.delete();
+                }
             }
 
             customer.setPhoto(fileName);
