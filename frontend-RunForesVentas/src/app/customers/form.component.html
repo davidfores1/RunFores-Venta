@@ -4,32 +4,12 @@
     <div class="card-body">
 
 
-        <!-- <ul class="alert alert-danger" *ngIf="errores?.length > 0">
-            <li *ngFor="let err of errores">
-                {{ err }}
-
-            </li>
-        </ul> -->
-
-        <form><!--  #customerForm="ngForm" -->
+        <form>
             <div class="form-group row">
                 <label for="document" class="col-form-label col-sm-2">Documento:</label>
                 <div class="col-sm-6">
                     <input type="text" class="form-control" [(ngModel)]="customer.document" name="document"
                      #document="ngModel">
-
-                    <!-- <div class="alert alert-danger" *ngIf="document.invalid && (document.$dirty || document.touched)">
-                        <div *ngIf="document.errors.required">
-                            Documento requerido
-                        </div>
-                        <div *ngIf="document.errors.minlength">
-                            El documento debe tener al menos 8 caracteres
-                        </div>
-                        <div *ngIf="document.errors.maxlength">
-                            Documento debe tener maximo 10 caracteres
-                        </div>
-
-                    </div> -->
 
                 </div>
             </div>
@@ -37,74 +17,40 @@
                 <label for="name" class="col-form-label col-sm-2">Nombre:</label>
                 <div class="col-sm-6">
                     <input type="text" class="form-control" [(ngModel)]="customer.name" name="name" 
-                         #name="ngModel">  <!--required minlength="8" maxlength="40" -->
-
-                    <!-- <div class="alert alert-danger" *ngIf="name.invalid && (name.$dirty || name.touched)">
-                        <div *ngIf="name.errors.required">
-                            Documento requerido
-                        </div>
-                        <div *ngIf="name.errors.minlength">
-                            El nombre debe tener al menos 7 caracteres
-                        </div>
-                        <div *ngIf="name.errors.maxlength">
-                            El documento debe tener maximo 40 caracteres
-                        </div>
-
-                    </div> -->
-
+                         #name="ngModel">
                 </div>
             </div>
             <div class="form-group row">
                 <label for="phone" class="col-form-label col-sm-2">Telefono:</label>
                 <div class="col-sm-6">
-                    <input type="text" class="form-control" [(ngModel)]="customer.phone" name="phone" #phone="ngModel"><!-- minlength="8" maxlength="40" -->
-
-                    <!-- <div class="alert alert-danger" *ngIf="phone.invalid && (phone.$dirty || phone.touched)">
-
-                        <div *ngIf="phone.errors.minlength">
-                            El telefono debe tener al menos 7 caracteres
-                        </div>
-                        <div *ngIf="phone.errors.maxlength">
-                            El telefono debe tener maximo 10 caracteres
-                        </div>
-
-                    </div> -->
-
+                    <input type="text" class="form-control" [(ngModel)]="customer.phone" name="phone" #phone="ngModel">
                 </div>
             </div>
             <div class="form-group row">
                 <label for="email" class="col-form-label col-sm-2">Correo:</label>
                 <div class="col-sm-6">
                     <input type="email" class="form-control" [(ngModel)]="customer.email" name="email"
-                        #email="ngModel"><!-- email -->
-
-                    <!-- <div class="alert alert-danger" *ngIf="email.invalid && (email.$dirty || email.touched)">
-
-                        <div *ngIf="email.errors.email">
-                            El correo debe tener un formato valido
-                        </div>
-
-                    </div> -->
-
+                        #email="ngModel">
                 </div>
             </div>
 
             <div class="form-group row">
-                <label for="email" class="col-form-label col-sm-2">Fecha de Nacimiento:</label>
+                <label for="dateBirth" class="col-form-label col-sm-2">Fecha de Nacimiento:</label>
                 <div class="col-sm-6">
-                    <input type="date" class="form-control" [(ngModel)]="customer.dateBirth" name="datebirth"
-                        #email="ngModel">
-
+                        <input matInput [matDatepicker]="picker" class="form-control" [(ngModel)]="customer.dateBirth" name="datebirth"
+                        #dateBirth="ngModel" style="display: inline; width: 300px; ">
+                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker #picker></mat-datepicker>
                 </div>
             </div>
 
             <div class="form-group row">
                 <div class="col-sm-6">
                     <button class="btn btn-primary" role="button" (click)='createCustomer()'
-                        *ngIf="!customer.id else elseBlock">Crear</button><!-- [disabled]="!customerForm.form.valid" -->
+                        *ngIf="!customer.id else elseBlock">Crear</button>
 
                     <ng-template #elseBlock>
-                        <button class="btn btn-primary" role="button" (click)='updateCustomer()'>Editar</button> <!-- [disabled]="!customerForm.form.valid" -->
+                        <button class="btn btn-primary" role="button" (click)='updateCustomer()'>Editar</button> 
                     </ng-template>
                 </div>
             </div>
