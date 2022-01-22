@@ -3,9 +3,12 @@ package com.backendrunfores.ventas.controllers;
 import com.backendrunfores.ventas.models.entity.Customer;
 import com.backendrunfores.ventas.models.services.ICustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.Resource;
+import org.springframework.core.io.UrlResource;
 import org.springframework.dao.DataAccessException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
@@ -15,6 +18,7 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.validation.Valid;
 import java.io.File;
 import java.io.IOException;
+import java.net.MalformedURLException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -164,7 +168,7 @@ public class CustomerRestController {
 
             Customer customer = customerService.findById(id);
             String previousPhotoName = customer.getPhoto();
-            
+
             if(previousPhotoName != null && previousPhotoName.length()>0){
                 Path previousRoutePhoto = Paths.get("uploads").resolve(previousPhotoName).toAbsolutePath();
                 File previousFilePhoto = previousRoutePhoto.toFile();
@@ -223,6 +227,28 @@ public class CustomerRestController {
         }
 
         return new ResponseEntity<Map<String, Object>>(response, HttpStatus.CREATED);
+    }
+
+    @GetMapping("/uploads/img/{phoneName:.+}")
+    public ResponseEntity<Resource>seePhoto(@PathVariable String phoneName){
+
+        Path routeFile = Paths.get("uploads").resolve(phoneName).toAbsolutePath();
+        Resource resource = null;
+
+        try {
+            resource = new UrlResource(routeFile.toUri());
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
+
+        if (!resource.exists() && !resource.isReadable()){
+            throw new RuntimeException("Error, no se pudo cargar la imagen: " + phoneName);
+        }
+
+        HttpHeaders cabecera = new HttpHeaders();
+        cabecera.add(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + resource.getFilename() + "\"");
+
+        return new ResponseEntity<Resource>(resource,cabecera, HttpStatus.CREATED);
     }
 
 }
