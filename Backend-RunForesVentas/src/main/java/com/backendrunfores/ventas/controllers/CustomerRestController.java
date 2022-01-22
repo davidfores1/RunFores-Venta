@@ -123,6 +123,7 @@ public class CustomerRestController {
             actualCustomer.setName(customer.getName());
             actualCustomer.setPhone(customer.getPhone());
             actualCustomer.setEmail(customer.getEmail());
+            actualCustomer.setDateBirth(customer.getDateBirth());
 
             updateCustomer = customerService.save(actualCustomer);
 

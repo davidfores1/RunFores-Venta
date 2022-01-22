@@ -4,5 +4,6 @@ export class Customer {
     name!:String;
     phone!:number;
     email!:String;
+    dateBirth!:Date;
     createAt!:string;
 }

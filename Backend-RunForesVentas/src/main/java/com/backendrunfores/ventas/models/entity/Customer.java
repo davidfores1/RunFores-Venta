@@ -6,6 +6,7 @@ import javax.persistence.*;
 import javax.validation.constraints.*;
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.Date;
 
 @Entity
 @Table(name = "customers")
@@ -17,7 +18,7 @@ public class Customer implements Serializable {
 
     @NotEmpty
     @Size(min = 8, max = 10)
-    @Column(nullable = false, unique = false)
+    @Column(nullable = false, unique = true)
     private String document;
 
     @NotEmpty
@@ -33,13 +34,18 @@ public class Customer implements Serializable {
     @Column(nullable = true)
     private String email;
 
+
+    @Column(name = "date_birth")
+    @Temporal(TemporalType.DATE)
+    private Date dateBirth;
+
     @Column(name = "create_at")
     private LocalDateTime createAt;
     @Column(name = "update_at")
     private LocalDateTime updateAt;
 
-
     public Long getId() {
+
         return id;
 
     }
@@ -96,6 +102,13 @@ public class Customer implements Serializable {
         this.updateAt = updateAt;
     }
 
+    public Date getDateBirth() {
+        return dateBirth;
+    }
+
+    public void setDateBirth(Date dateBirth) {
+        this.dateBirth = dateBirth;
+    }
 
     @PrePersist
     private void antesDePersistir() {

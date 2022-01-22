@@ -22,6 +22,7 @@
           <th scope="col">Nombre</th>
           <th scope="col">Teléfono</th>
           <th scope="col">Email</th>
+          <th scope="col">Fecha de nacimiento</th>
           <th scope="col">Fecha de registro</th>
           <th class="text-center">Acciones</th>
         </tr>
@@ -33,6 +34,7 @@
           <td>{{ customer.name }}</td>
           <td>{{ customer.phone }}</td>
           <td>{{ customer.email }}</td>
+          <td>{{ customer.dateBirth }}</td>
           <td>{{ customer.createAt | date: "short" }}</td>
           <td>
             <div class="btn-group">
