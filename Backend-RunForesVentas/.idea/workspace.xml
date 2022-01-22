@@ -7,8 +7,7 @@
     <list default="true" id="bd620d72-1ee0-4af9-b438-1852ad8a1923" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/backendrunfores/ventas/controllers/CustomerRestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/backendrunfores/ventas/controllers/CustomerRestController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/backendrunfores/ventas/models/entity/Customer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/backendrunfores/ventas/models/entity/Customer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend-RunForesVentas/src/app/customers/form.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend-RunForesVentas/src/app/customers/form.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -110,7 +109,7 @@
       <workItem from="1642641672655" duration="1696000" />
       <workItem from="1642729044325" duration="3284000" />
       <workItem from="1642811188609" duration="6559000" />
-      <workItem from="1642856501464" duration="4046000" />
+      <workItem from="1642856501464" duration="4502000" />
     </task>
     <servers />
   </component>

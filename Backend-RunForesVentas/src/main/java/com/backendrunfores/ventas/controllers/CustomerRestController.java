@@ -20,6 +20,7 @@ import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
 @CrossOrigin(origins = {"http://localhost:4200/"})
@@ -178,7 +179,7 @@ public class CustomerRestController {
         Customer customer = customerService.findById(id);
 
         if (!file.isEmpty()){
-            String fileName = file.getOriginalFilename();
+            String fileName = UUID.randomUUID().toString() + "_" + file.getOriginalFilename().replace(" ", " ");
             Path routeFile = Paths.get("uploads").resolve(fileName).toAbsolutePath();
 
             try {
