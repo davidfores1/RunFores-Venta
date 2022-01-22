@@ -10,11 +10,16 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.Valid;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;   
+import java.util.Map;
 import java.util.stream.Collectors;
 
 @CrossOrigin(origins = {"http://localhost:4200/"})
@@ -165,6 +170,34 @@ public class CustomerRestController {
 
         response.put("mensaje", "El cliente eliminado con éxito");
         return new ResponseEntity<Map<String, Object>>(response, HttpStatus.OK);
+    }
+
+    @PostMapping("/clientes/upload")
+    public ResponseEntity<?> upload(@RequestParam("file") MultipartFile file, @RequestParam("id") Long id) {
+        Map<String, Object> response = new HashMap<>();
+        Customer customer = customerService.findById(id);
+
+        if (!file.isEmpty()){
+            String fileName = file.getOriginalFilename();
+            Path routeFile = Paths.get("uploads").resolve(fileName).toAbsolutePath();
+
+            try {
+                Files.copy(file.getInputStream(), routeFile);
+            } catch (IOException e) {
+
+                response.put("mensaje", "Error al subir la imagen del cliente");
+                response.put("error", e.getMessage().concat(": ").concat(e.getCause().getMessage()));
+                return new ResponseEntity<Map<String, Object>>(response, HttpStatus.INTERNAL_SERVER_ERROR);
+            }
+
+            customer.setPhoto(fileName);
+            customerService.save(customer);
+
+            response.put("customer", customer);
+            response.put("mensaje", "Has subido correctamente la imagen: " + fileName);
+        }
+
+        return new ResponseEntity<Map<String, Object>>(response, HttpStatus.CREATED);
     }
 
 }

@@ -39,6 +39,8 @@ public class Customer implements Serializable {
     @Temporal(TemporalType.DATE)
     private Date dateBirth;
 
+    private String photo;
+
     @Column(name = "create_at")
     private LocalDateTime createAt;
     @Column(name = "update_at")
@@ -107,7 +109,17 @@ public class Customer implements Serializable {
     }
 
     public void setDateBirth(Date dateBirth) {
+
         this.dateBirth = dateBirth;
+    }
+
+    public String getPhoto() {
+        return photo;
+    }
+
+
+    public void setPhoto(String photo) {
+        this.photo = photo;
     }
 
     @PrePersist
