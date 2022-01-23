@@ -6,7 +6,7 @@ import { HeaderComponent } from './layouts/header/header.component';
 import { FooterComponent } from './layouts/footer/footer.component';
 import { CustomersComponent } from './customers/customers.component';
 import { PaginatorComponent } from './paginator/paginator.component';
-import { FormComponent } from './customers/form.component'
+import { FormComponent } from './customers/form/form.component'
 
 import { CustomeService } from './services/custome.service';
 

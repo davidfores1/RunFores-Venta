@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { CustomersComponent } from './customers/customers.component';
-import { FormComponent } from './customers/form.component';
+import { FormComponent } from './customers/form/form.component';
 
 const routes:Routes =[
 

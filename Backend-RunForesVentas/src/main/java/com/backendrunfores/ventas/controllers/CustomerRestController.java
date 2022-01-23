@@ -2,6 +2,8 @@ package com.backendrunfores.ventas.controllers;
 
 import com.backendrunfores.ventas.models.entity.Customer;
 import com.backendrunfores.ventas.models.services.ICustomerService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.UrlResource;
@@ -35,6 +37,8 @@ public class CustomerRestController {
 
     @Autowired
     ICustomerService customerService;
+
+    private final Logger log = LoggerFactory.getLogger(CustomerRestController.class);
 
     @GetMapping("/clientes")
     public List<Customer> index() {
@@ -199,6 +203,7 @@ public class CustomerRestController {
             String fileName = UUID.randomUUID().toString() + "_" + file.getOriginalFilename().replace(" ", " ");
             Path routeFile = Paths.get("uploads").resolve(fileName).toAbsolutePath();
 
+            log.info(routeFile.toString());
             try {
                 Files.copy(file.getInputStream(), routeFile);
             } catch (IOException e) {
@@ -233,6 +238,7 @@ public class CustomerRestController {
     public ResponseEntity<Resource>seePhoto(@PathVariable String phoneName){
 
         Path routeFile = Paths.get("uploads").resolve(phoneName).toAbsolutePath();
+        log.info(routeFile.toString());
         Resource resource = null;
 
         try {

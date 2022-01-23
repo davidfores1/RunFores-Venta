@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Customer } from '../models/customer';
-import { CustomeService } from '../services/custome.service';
+import { Customer } from '../../models/customer';
+import { CustomeService } from '../../services/custome.service';
 import Swal from 'sweetalert2'
 import { ToastrService } from 'ngx-toastr';
 import { tap } from 'rxjs/operators';
