@@ -1,9 +1,10 @@
 export class Customer {
     id!:number;
     document!:number;
-    name!:String;
+    name!:string;
     phone!:number;
-    email!:String;
+    email!:string;
     dateBirth!:Date;
+    photo!:string;
     createAt!:string;
 }

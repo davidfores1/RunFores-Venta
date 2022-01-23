@@ -84,4 +84,20 @@ export class CustomeService {
     );
   }
 
+  uploadPhoto(file: File, id:any):Observable<Customer>{
+
+    let formData = new FormData();
+    formData.append("file", file)
+    formData.append("id", id);
+    return this.http.post(`${environment.apiUrl}${this.routeCliente}upload/`,formData).pipe(
+
+      map((response: any) => response.customer as Customer),
+      catchError(e =>{
+        Swal.fire(e.error.mensaje, e.error.error, 'error');
+        return throwError(e);
+        
+      })
+    );
+  }
+
 }

@@ -17,6 +17,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatMomentDateModule } from '@angular/material-moment-adapter';
+import { DetailComponent } from './customers/detail/detail.component';
  
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import {MatMomentDateModule } from '@angular/material-moment-adapter';
     FooterComponent,
     CustomersComponent,
     FormComponent,
-    PaginatorComponent
+    PaginatorComponent,
+    DetailComponent
   ],
   imports: [
     BrowserModule,
