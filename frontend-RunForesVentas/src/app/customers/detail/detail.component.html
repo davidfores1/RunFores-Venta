@@ -19,7 +19,7 @@
               <label class="custom-file-label" for="inputGroupFile04">Seleccionar foto</label>
             </div>
             <div class="input-group-append">
-              <button (click)="uploadPhotoComponet()" class="btn btn-outline-success" type="button"
+              <button (click)="uploadPhotoComponet()" [disabled]="!selectPhotoVariable" class="btn btn-outline-success" type="button"
                 id="inputGroupFileAddon04">Enviar</button>
             </div>
           </div>
