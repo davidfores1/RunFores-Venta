@@ -12,7 +12,7 @@
             <li class="list-group-item">{{ customer.email }}</li>
             <li class="list-group-item">{{ customer.createAt | date: "short" }}</li>
           </ul>
-          <div class="input-group">
+          <div class="input-group mb-3">
             <div class="custom-file">
               <input (change)="selectPhone($event)" type="file" class="custom-file-input" id="inputGroupFile04"
                 aria-describedby="inputGroupFileAddon04">
@@ -23,6 +23,13 @@
                 id="inputGroupFileAddon04">Enviar</button>
             </div>
           </div>
+
+          <div *ngIf="progress > 0" class="progress" style="height:40px">
+            <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" attr.aria-valuenow="{{progress}}" aria-valuemin="0" aria-valuemax="100" [ngStyle]="{width:progress+'%'}">
+              {{progress}}%
+            </div>
+          </div>
+          
         </div>
 
         <div class="col-sm">

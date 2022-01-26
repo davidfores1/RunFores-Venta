@@ -1,4 +1,4 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpEvent, HttpHeaders, HttpRequest } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
@@ -84,20 +84,17 @@ export class CustomeService {
     );
   }
 
-  uploadPhoto(file: File, id:any):Observable<Customer>{
+  uploadPhoto(file: File, id:any):Observable<HttpEvent<{}>>{
 
     let formData = new FormData();
     formData.append("file", file)
     formData.append("id", id);
-    return this.http.post(`${environment.apiUrl}${this.routeCliente}upload/`,formData).pipe(
 
-      map((response: any) => response.customer as Customer),
-      catchError(e =>{
-        Swal.fire(e.error.mensaje, e.error.error, 'error');
-        return throwError(e);
-        
-      })
-    );
+    const req = new HttpRequest('POST', `${environment.apiUrl}${this.routeCliente}upload/`,formData, {
+      reportProgress: true
+    });
+
+    return this.http.request(req);
   }
 
 }

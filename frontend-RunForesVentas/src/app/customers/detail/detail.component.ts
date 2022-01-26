@@ -1,3 +1,4 @@
+import { HttpEventType } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Customer } from 'src/app/models/customer';
@@ -12,8 +13,9 @@ import Swal from 'sweetalert2';
 export class DetailComponent implements OnInit {
 
   title: string = "Detalle del cliente";
-  selectPhotoVariable!: File;
+  selectPhotoVariable!: any;
   customer!: Customer;
+  progress: number = 0;
 
   constructor(public customerService: CustomeService, private activatedRote: ActivatedRoute) { }
 
@@ -34,8 +36,10 @@ export class DetailComponent implements OnInit {
 
   selectPhone(event: any) {
 
+    this.progress = 0;
+    console.log(this.progress);
+    
     this.selectPhotoVariable = event.target.files[0];
-    console.log(this.selectPhotoVariable);
 
     if(this.selectPhotoVariable.type.indexOf('image') < 0){
 
@@ -55,17 +59,20 @@ export class DetailComponent implements OnInit {
     }else{
 
       this.customerService.uploadPhoto(this.selectPhotoVariable, this.customer.id)
-      .subscribe(customer=>{
+      .subscribe(event=>{
         
-      this.customer = customer;
-  
-      console.log(this.customer);
-      
-  
-      Swal.fire(
-        'La foto se ha subido completamente!',
-        `La foto se ha subido con éxito ${this.customer.photo}`, 'success'
-      )
+        if(event.type === HttpEventType.UploadProgress){
+          this.progress = Math.round(100 * event.loaded / (event.total ?? 0));
+        }else if(event.type === HttpEventType.Response){
+          let response : any = event.body;
+          this.customer = response.customer as Customer;
+          
+          Swal.fire(
+            'La foto se ha subido completamente!',
+            `La foto se ha subido con éxito ${response.mensaje}`, 'success'
+          )
+
+        }  
   
       })
 
