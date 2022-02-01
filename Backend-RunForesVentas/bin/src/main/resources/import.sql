@@ -1,0 +1,6 @@
+INSERT INTO `customers` (`create_at`, `document`, `email`, `name`, `phone`, `update_at`, `date_birth`)VALUES('2022-01-16 16:50:48', '1143940722', 'Mera@gmail.com', 'Carlos Mera', '2131231232', NULL, '2022-01-16');
+INSERT INTO `customers` (`create_at`, `document`, `email`, `name`, `phone`, `update_at`, `date_birth`)VALUES('2022-01-16 16:50:48', '1143940754', 'Mera@gmail.com', 'Carlos Mera', '2131231232', NULL, '2022-01-16');
+INSERT INTO `customers` (`create_at`, `document`, `email`, `name`, `phone`, `update_at`, `date_birth`)VALUES('2022-01-16 16:50:48', '47984654', 'Mera@gmail.com', 'Carlos Mera', '2131231232', NULL, '2022-01-16');
+INSERT INTO `customers` (`create_at`, `document`, `email`, `name`, `phone`, `update_at`, `date_birth`)VALUES('2022-01-16 16:50:48', '585654554', 'Mera@gmail.com', 'Carlos Mera', '2131231232', NULL, '2022-01-16');
+INSERT INTO `customers` (`create_at`, `document`, `email`, `name`, `phone`, `update_at`, `date_birth`)VALUES('2022-01-16 16:50:48', '1135855587', 'Mera@gmail.com', 'Carlos Mera', '2131231232', NULL, '2022-01-16');
+INSERT INTO `customers` (`create_at`, `document`, `email`, `name`, `phone`, `update_at`, `date_birth`)VALUES('2022-01-16 16:50:48', '954546544', 'Mera@gmail.com', 'Carlos Mera', '2131231232', NULL, '2022-01-16');
