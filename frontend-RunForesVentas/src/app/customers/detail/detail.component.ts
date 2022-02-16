@@ -1,5 +1,5 @@
 import { HttpEventType } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Customer } from 'src/app/models/customer';
 import { CustomeService } from 'src/app/services/custome.service';
@@ -14,24 +14,14 @@ export class DetailComponent implements OnInit {
 
   title: string = "Detalle del cliente";
   selectPhotoVariable!: any;
-  customer!: Customer;
+  @Input() customer!: Customer;
   progress: number = 0;
 
   constructor(public customerService: CustomeService, private activatedRote: ActivatedRoute) { }
 
   ngOnInit(): void {
 
-    this.activatedRote.paramMap.subscribe(params => {
-
-      let id: number = +params.get('id')! | 0;
-      if (id) {
-        this.customerService.getCustomer(id).subscribe(customer => {
-
-          this.customer = customer;
-
-        })
-      }
-    })
+    
   }
 
   selectPhone(event: any) {

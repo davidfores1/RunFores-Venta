@@ -15,6 +15,7 @@ export class CustomersComponent implements OnInit {
 
   customers!: Customer[];
   paginator:any;
+  selectCustomer!:Customer;
 
   constructor(private customeService: CustomeService, private activatedRoute: ActivatedRoute) { }
 
@@ -78,6 +79,10 @@ export class CustomersComponent implements OnInit {
       }
     })
 
+  }
+
+  openModal(customer: Customer){
+    this.selectCustomer = customer;
   }
 
 }

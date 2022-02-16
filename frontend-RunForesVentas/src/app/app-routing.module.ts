@@ -11,7 +11,6 @@ const routes:Routes =[
   {path: 'clientes/form', component:FormComponent},
   {path: 'clientes/page/:page', component:CustomersComponent},
   {path: 'clientes/form/:id', component:FormComponent},
-  {path: 'clientes/detail/:id', component:DetailComponent}
 
 ];
 
