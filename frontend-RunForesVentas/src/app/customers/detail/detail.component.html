@@ -1,42 +1,53 @@
-<br><br>
-<div class="card bg-light text-black">
-  <div class="card-header">{{title}}</div>
-  <div class="card-body">
-    <div class="container">
-      <div class="row">
-
-        <div class="col-sm">
-          <ul *ngIf="customer" class="list-group text-dark mb-3">
-            <li class="list-group-item active">{{ customer.name}}</li>
-            <li class="list-group-item">{{ customer.phone }}</li>
-            <li class="list-group-item">{{ customer.email }}</li>
-            <li class="list-group-item">{{ customer.createAt | date: "short" }}</li>
-          </ul>
-          <div class="input-group mb-3">
-            <div class="custom-file">
-              <input (change)="selectPhone($event)" type="file" class="custom-file-input" id="inputGroupFile04"
-                aria-describedby="inputGroupFileAddon04">
-              <label class="custom-file-label" for="inputGroupFile04">Seleccionar foto</label>
+<div class="modal" tabindex="-1" *ngIf="modalService.modal" style="display: block">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">{{title}}</h5>
+        <button type="button" (click)="closeModal()" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="container">
+          <div class="row">
+    
+            <div class="col-sm">
+              <ul *ngIf="customer" class="list-group text-dark mb-3">
+                <li class="list-group-item active">{{ customer.name}}</li>
+                <li class="list-group-item">{{ customer.phone }}</li>
+                <li class="list-group-item">{{ customer.email }}</li>
+                <li class="list-group-item">{{ customer.createAt | date: "short" }}</li>
+              </ul>
+              <div class="input-group mb-3">
+                <div class="custom-file">
+                  <input (change)="selectPhone($event)" type="file" class="custom-file-input" id="inputGroupFile04"
+                    aria-describedby="inputGroupFileAddon04">
+                  <label class="custom-file-label" for="inputGroupFile04">Seleccionar foto</label>
+                </div>
+                <div class="input-group-append">
+                  <button (click)="uploadPhotoComponet()" [disabled]="!selectPhotoVariable" class="btn btn-outline-success" type="button"
+                    id="inputGroupFileAddon04">Enviar</button>
+                </div>
+              </div>
+    
+              <div *ngIf="progress > 0" class="progress" style="height:40px">
+                <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" attr.aria-valuenow="{{progress}}" aria-valuemin="0" aria-valuemax="100" [ngStyle]="{width:progress+'%'}">
+                  {{progress}}%
+                </div>
+              </div>
+              
             </div>
-            <div class="input-group-append">
-              <button (click)="uploadPhotoComponet()" [disabled]="!selectPhotoVariable" class="btn btn-outline-success" type="button"
-                id="inputGroupFileAddon04">Enviar</button>
+    
+            <div class="col-sm">
+              <img *ngIf="customer?.photo" src="http://localhost:8080/api/uploads/img/{{customer.photo}}" alt=""
+                class="img-thumbnail rounded" style="width: 400px; height: 400px;">
             </div>
+    
           </div>
-
-          <div *ngIf="progress > 0" class="progress" style="height:40px">
-            <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" attr.aria-valuenow="{{progress}}" aria-valuemin="0" aria-valuemax="100" [ngStyle]="{width:progress+'%'}">
-              {{progress}}%
-            </div>
-          </div>
-          
         </div>
-
-        <div class="col-sm">
-          <img *ngIf="customer?.photo" src="http://localhost:8080/api/uploads/img/{{customer.photo}}" alt=""
-            class="img-thumbnail rounded" style="width: 400px; height: 400px;">
-        </div>
-
+      </div>
+      <div class="modal-footer">
+        <button type="button" (click)="closeModal()" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
       </div>
     </div>
   </div>
