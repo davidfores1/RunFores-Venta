@@ -3,7 +3,7 @@
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title">{{title}}</h5>
+          <h3 class="modal-title">{{title}}</h3>
           <button type="button" (click)="closeModal()" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -12,7 +12,7 @@
           <div class="container">
             <div class="row">
 
-              <div class="col-sm">
+              <div class="col-sm ml-5">
                 <ul *ngIf="customer" class="list-group text-dark mb-3">
                   <li class="list-group-item active">{{ customer.name}}</li>
                   <li class="list-group-item">{{ customer.phone }}</li>
@@ -29,7 +29,7 @@
                     <button (click)="uploadPhotoComponet()" [disabled]="!selectPhotoVariable"
                       class="btn btn-outline-success" type="button" id="inputGroupFileAddon04">Enviar</button>
                   </div>
-                </div>
+                </div> 
 
                 <div *ngIf="progress > 0" class="progress" style="height:40px">
                   <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
@@ -41,9 +41,12 @@
 
               </div>
 
-              <div class="col-sm">
-                <img *ngIf="customer?.photo" src="http://localhost:8080/api/uploads/img/{{customer.photo}}" alt=""
-                  class="img-thumbnail rounded" style="width: 400px; height: 400px;">
+              <div class="col-sm ml-5">
+                <img *ngIf="customer?.photo" src="http://localhost:8080/api/uploads/img/{{customer.photo}}"
+                  class="img-thumbnail rounded" style="width: 280px; height: 300px;" alt="{{ customer.photo}}">
+
+                  <img *ngIf="!customer?.photo" src="http://localhost:8080/images/not_user.png"
+                  class="img-thumbnail rounded" style="width: 280px; height: 300px;" alt="Sin foto">
               </div>
 
             </div>
