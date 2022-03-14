@@ -1,6 +1,5 @@
 package com.backendrunfores.ventas.models.entity;
 
-import org.hibernate.validator.constraints.Range;
 
 import javax.persistence.*;
 import javax.validation.constraints.*;
