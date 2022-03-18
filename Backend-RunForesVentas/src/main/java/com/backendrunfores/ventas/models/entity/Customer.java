@@ -3,6 +3,9 @@ package com.backendrunfores.ventas.models.entity;
 
 import javax.persistence.*;
 import javax.validation.constraints.*;
+
+import com.fasterxml.jackson.annotation.JsonIncludeProperties;
+
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.Date;
@@ -11,7 +14,12 @@ import java.util.Date;
 @Table(name = "customers")
 public class Customer implements Serializable {
 
-    @Id
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
@@ -44,6 +52,11 @@ public class Customer implements Serializable {
     private LocalDateTime createAt;
     @Column(name = "update_at")
     private LocalDateTime updateAt;
+    
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "region_id")
+    @JsonIncludeProperties({"hibernateLazyInitializer", "handler"})
+    private Region region;
 
     public Long getId() {
 
@@ -131,4 +144,14 @@ public class Customer implements Serializable {
 
         this.updateAt = LocalDateTime.now();
     }
+
+	public Region getRegion() {
+		return region;
+	}
+
+	public void setRegion(Region region) {
+		this.region = region;
+	}
+    
+    
 }
