@@ -4,7 +4,7 @@ package com.backendrunfores.ventas.models.entity;
 import javax.persistence.*;
 import javax.validation.constraints.*;
 
-import com.fasterxml.jackson.annotation.JsonIncludeProperties;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
@@ -20,7 +20,7 @@ public class Customer implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
 
     @NotEmpty
@@ -53,9 +53,10 @@ public class Customer implements Serializable {
     @Column(name = "update_at")
     private LocalDateTime updateAt;
     
+    @NotNull(message="La región no pude ser vacia")
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "region_id")
-    @JsonIncludeProperties({"hibernateLazyInitializer", "handler"})
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     private Region region;
 
     public Long getId() {

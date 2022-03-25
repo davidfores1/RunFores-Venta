@@ -16,7 +16,7 @@ import javax.validation.constraints.Size;
 public class Region implements Serializable {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	private Long id;
 
 	@NotEmpty
