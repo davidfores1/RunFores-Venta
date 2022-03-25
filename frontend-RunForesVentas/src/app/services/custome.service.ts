@@ -6,7 +6,7 @@ import { Customer } from '../models/customer';
 import { environment } from 'src/environments/environment';
 import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
-import { formatDate } from '@angular/common';
+import { Region } from '../models/region';
 
 @Injectable({
   providedIn: 'root'
@@ -95,6 +95,12 @@ export class CustomeService {
     });
 
     return this.http.request(req);
+  }
+
+  getRegions():Observable<Region[]>{
+
+     return this.http.get<Region[]>(environment.apiUrl + this.routeCliente + '/regiones');
+     
   }
 
 }

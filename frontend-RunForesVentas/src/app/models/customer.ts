@@ -1,3 +1,5 @@
+import { Region } from "./region";
+
 export class Customer {
     id!:number;
     document!:number;
@@ -7,4 +9,5 @@ export class Customer {
     dateBirth!:Date;
     photo!:string;
     createAt!:string;
+    region!:Region;
 }

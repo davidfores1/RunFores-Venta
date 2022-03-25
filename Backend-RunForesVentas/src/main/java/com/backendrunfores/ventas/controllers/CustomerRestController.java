@@ -1,11 +1,10 @@
 package com.backendrunfores.ventas.controllers;
 
 import com.backendrunfores.ventas.models.entity.Customer;
+import com.backendrunfores.ventas.models.entity.Region;
 import com.backendrunfores.ventas.models.services.ICustomerService;
 import com.backendrunfores.ventas.models.services.IUploadFileService;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
 import org.springframework.dao.DataAccessException;
@@ -37,7 +36,7 @@ public class CustomerRestController {
 	@Autowired
 	private IUploadFileService uploadFileService;
 
-	private final Logger log = LoggerFactory.getLogger(CustomerRestController.class);
+	//private final Logger log = LoggerFactory.getLogger(CustomerRestController.class);
 
 	@GetMapping("/clientes")
 	public List<Customer> index() {
@@ -147,6 +146,7 @@ public class CustomerRestController {
 			actualCustomer.setPhone(customer.getPhone());
 			actualCustomer.setEmail(customer.getEmail());
 			actualCustomer.setDateBirth(customer.getDateBirth());
+			actualCustomer.setRegion(customer.getRegion());
 
 			updateCustomer = customerService.save(actualCustomer);
 
@@ -235,6 +235,11 @@ public class CustomerRestController {
 		cabecera.add(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + resource.getFilename() + "\"");
 
 		return new ResponseEntity<Resource>(resource, cabecera, HttpStatus.CREATED);
+	}
+	
+	@GetMapping("/clientes/regiones")
+	public List<Region> regionslList() {
+		return customerService.findAllRegions();
 	}
 
 }

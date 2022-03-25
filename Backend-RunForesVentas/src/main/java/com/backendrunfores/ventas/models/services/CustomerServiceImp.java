@@ -2,6 +2,8 @@ package com.backendrunfores.ventas.models.services;
 
 import com.backendrunfores.ventas.models.dao.ICustomerDao;
 import com.backendrunfores.ventas.models.entity.Customer;
+import com.backendrunfores.ventas.models.entity.Region;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -50,4 +52,11 @@ public class CustomerServiceImp implements ICustomerService {
     public Customer byDocument(String document) {
         return customerDao.findByDocument(document);
     }
+
+	@Override
+    @Transactional
+	public List<Region> findAllRegions() {
+		// TODO Auto-generated method stub
+		return customerDao.findAllRegions();
+	}
 }

@@ -1,6 +1,8 @@
 package com.backendrunfores.ventas.models.services;
 
 import com.backendrunfores.ventas.models.entity.Customer;
+import com.backendrunfores.ventas.models.entity.Region;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
@@ -19,5 +21,7 @@ public interface ICustomerService {
     public void delete(Long id);
 
     public Customer byDocument(String document);
+    
+    public List<Region> findAllRegions();
 
 }
