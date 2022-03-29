@@ -16,7 +16,7 @@ import javax.validation.constraints.Size;
 public class Region implements Serializable {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
 	@NotEmpty
@@ -36,8 +36,8 @@ public class Region implements Serializable {
 		return name;
 	}
 
-	public void setNombre(String nombre) {
-		this.name = nombre;
+	public void setNombre(String name) {
+		this.name = name;
 	}
 
 	private static final long serialVersionUID = 1L;

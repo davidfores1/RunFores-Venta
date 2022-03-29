@@ -1,6 +1,6 @@
 export class Region{
     
     id!:number;
-    name!:string;
+    nombre!:string;
 
 }

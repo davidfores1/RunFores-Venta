@@ -5,6 +5,7 @@ import { CustomeService } from '../../services/custome.service';
 import Swal from 'sweetalert2'
 import { ToastrService } from 'ngx-toastr';
 import { tap } from 'rxjs/operators';
+import { Region } from '../../models/region';
 
 @Component({
   selector: 'app-form',
@@ -13,14 +14,19 @@ import { tap } from 'rxjs/operators';
 export class FormComponent implements OnInit {
 
   customer: Customer = new Customer();
+  regiones!: Region[];
   titulo: string = "Crear Cliente";
+  
 
-  errores!: string[]
+  errores!: string[];
 
   constructor(private customerService: CustomeService, private router: Router, private activatedRoute: ActivatedRoute, private toastr: ToastrService) { }
 
   ngOnInit(): void {
-    this.selectCustomer()
+    this.selectCustomer();
+    this.customerService.getRegions().subscribe(regiones =>{
+      this.regiones = regiones;
+    })
   }
 
   selectCustomer() {
@@ -33,8 +39,7 @@ export class FormComponent implements OnInit {
           this.customer = respuesta;
         }))
       }
-    })
-
+    });
   }
 
   public createCustomer(): void {
@@ -96,5 +101,16 @@ export class FormComponent implements OnInit {
       }
     )
   }
+
+  compararRegion(obj1: Region, obj2: Region): 
+  boolean 
+  {
+    if(obj1 === undefined && obj2 === undefined ){
+      return true;
+    }
+       return obj1 === null || obj2 === null || obj1 === undefined || obj2 === undefined ? false: obj1.id === obj2.id;
+  }
+
+  
 
 }

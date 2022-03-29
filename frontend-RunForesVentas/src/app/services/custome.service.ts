@@ -99,7 +99,7 @@ export class CustomeService {
 
   getRegions():Observable<Region[]>{
 
-     return this.http.get<Region[]>(environment.apiUrl + this.routeCliente + '/regiones');
+     return this.http.get<Region[]>(environment.apiUrl + this.routeCliente + 'regiones');
      
   }
 

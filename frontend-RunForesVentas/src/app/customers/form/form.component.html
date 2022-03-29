@@ -9,15 +9,14 @@
                 <label for="document" class="col-form-label col-sm-2">Documento:</label>
                 <div class="col-sm-6">
                     <input type="text" class="form-control" [(ngModel)]="customer.document" name="document"
-                     #document="ngModel">
+                        #document="ngModel">
 
                 </div>
             </div>
             <div class="form-group row">
                 <label for="name" class="col-form-label col-sm-2">Nombre:</label>
                 <div class="col-sm-6">
-                    <input type="text" class="form-control" [(ngModel)]="customer.name" name="name" 
-                         #name="ngModel">
+                    <input type="text" class="form-control" [(ngModel)]="customer.name" name="name" #name="ngModel">
                 </div>
             </div>
             <div class="form-group row">
@@ -29,18 +28,28 @@
             <div class="form-group row">
                 <label for="email" class="col-form-label col-sm-2">Correo:</label>
                 <div class="col-sm-6">
-                    <input type="email" class="form-control" [(ngModel)]="customer.email" name="email"
-                        #email="ngModel">
+                    <input type="email" class="form-control" [(ngModel)]="customer.email" name="email" #email="ngModel">
                 </div>
             </div>
 
             <div class="form-group row">
                 <label for="dateBirth" class="col-form-label col-sm-2">Fecha de Nacimiento:</label>
                 <div class="col-sm-6">
-                        <input matInput [matDatepicker]="picker" class="form-control" [(ngModel)]="customer.dateBirth" name="datebirth"
-                        #dateBirth="ngModel" style="display: inline; width: 300px;">
-                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                        <mat-datepicker #picker></mat-datepicker>
+                    <input matInput [matDatepicker]="picker" class="form-control" [(ngModel)]="customer.dateBirth"
+                        name="datebirth" #dateBirth="ngModel" style="display: inline; width: 300px;">
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="region" class="col-form-label col-sm-2">Region</label>
+                <div class="col-sm-6">
+                    <select [compareWith]="compararRegion" class="form-control" [(ngModel)]="customer.region" name="region"
+                        style="width: 400px;">
+                        <option [ngValue]="undefined">--- Seleccione una regíon ---</option>
+                        <option *ngFor="let region of regiones" [ngValue]="region">{{ region.nombre }}</option>
+                    </select>
                 </div>
             </div>
 
@@ -50,7 +59,7 @@
                         *ngIf="!customer.id else elseBlock">Crear</button>
 
                     <ng-template #elseBlock>
-                        <button class="btn btn-primary" role="button" (click)='updateCustomer()'>Editar</button> 
+                        <button class="btn btn-primary" role="button" (click)='updateCustomer()'>Editar</button>
                     </ng-template>
                 </div>
             </div>
