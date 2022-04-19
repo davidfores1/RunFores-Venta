@@ -18,3 +18,13 @@ INSERT INTO customers (create_at, date_birth, document, email, name, phone, phot
 INSERT INTO customers (create_at, date_birth, document, email, name, phone, photo, update_at, region_id) VALUES (to_timestamp('24/03/2022 10:16:21,088000000 PM','DD/MM/YYYY HH12:MI:SSXFF AM'),to_date('19/03/2022','DD/MM/YYYY'), '11459854', 'andres@hotmail.com', 'Andres Dominguez', '4212577', 'b08be21c-8ebe-433d-83d9-6dcf995f290a_descarga (1).jpg', null,7);
 INSERT INTO customers (create_at, date_birth, document, email, name, phone, photo, update_at, region_id) VALUES (to_timestamp('24/03/2022 10:16:21,088000000 PM','DD/MM/YYYY HH12:MI:SSXFF AM'),to_date('19/03/2022','DD/MM/YYYY'), '12345678', 'caroldd@hotmail.es', 'Carol Benitez', '3113067035', '449818a2-3bd3-4a51-b116-fc59898f7d4a_Capture001.png', null,8);
 
+INSERT INTO usuarios (username, password, enabled) VALUES ('andres','$2a$10$fVEKQ0t6ZlfPgkrgcJIw4uQBz3SDDYAfmfJwSBklXYboLh.3kStle',1);
+INSERT INTO usuarios (username, password, enabled) VALUES ('admin','$2a$10$.RN/mHBGLW1Q3Hkl6cnYnugDCcb9FXQ7VoJlCUpyfNE5YifzQwwPC',1);
+
+insert into roles(nombre)values('ROL_USER');
+insert into roles(nombre)values('ROL_ADMIN');
+
+INSERT INTO usuarios_roles (usuario_id, roles_id) VALUES (1,1);
+INSERT INTO usuarios_roles (usuario_id, roles_id) VALUES (2,2);
+INSERT INTO usuarios_roles (usuario_id, roles_id) VALUES (2,1);
+
