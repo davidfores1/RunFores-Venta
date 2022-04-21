@@ -48,6 +48,7 @@ public class UsuarioService implements IusuarioService, UserDetailsService{
 	}
 
 	@Override
+	@Transactional(readOnly = true)
 	public Usuario findByUsername(String usename) {
 		// TODO Auto-generated method stub
 		return usuarioDao.findByUsername(usename);
