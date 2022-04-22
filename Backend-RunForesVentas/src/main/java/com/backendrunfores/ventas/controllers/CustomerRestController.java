@@ -13,6 +13,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -49,6 +50,7 @@ public class CustomerRestController {
 		return customerService.findAll(PageRequest.of(page, 4));
 	}
 
+	@Secured({"ROLE_ADMIN", "ROLE_USER"})
 	@GetMapping("/clientes/{id}")
 	public ResponseEntity<?> searchId(@PathVariable Long id) {
 
@@ -75,6 +77,7 @@ public class CustomerRestController {
 
 	}
 
+	@Secured("ROLE_ADMIN")
 	@PostMapping("clientes")
 	public ResponseEntity<?> create(@Valid @RequestBody Customer customer, BindingResult result) {
 
@@ -114,6 +117,7 @@ public class CustomerRestController {
 		return new ResponseEntity<Map<String, Object>>(response, HttpStatus.CREATED);
 	}
 
+	@Secured("ROLE_ADMIN")
 	@PutMapping("clientes/{id}")
 	public ResponseEntity<?> update(@Valid @RequestBody Customer customer, BindingResult result,
 			@PathVariable Long id) {
@@ -161,6 +165,7 @@ public class CustomerRestController {
 		return new ResponseEntity<Map<String, Object>>(response, HttpStatus.CREATED);
 	}
 
+	@Secured("ROLE_ADMIN")
 	@DeleteMapping("/clientes/{id}")
 	public ResponseEntity<?> delete(@PathVariable Long id) {
 
@@ -185,6 +190,7 @@ public class CustomerRestController {
 		return new ResponseEntity<Map<String, Object>>(response, HttpStatus.OK);
 	}
 
+	@Secured({"ROLE_ADMIN", "ROLE_USER"})
 	@PostMapping("/clientes/upload")
 	public ResponseEntity<?> upload(@RequestParam("file") MultipartFile file, @RequestParam("id") Long id) {
 		
@@ -237,6 +243,7 @@ public class CustomerRestController {
 		return new ResponseEntity<Resource>(resource, cabecera, HttpStatus.CREATED);
 	}
 	
+	@Secured("ROLE_ADMIN")
 	@GetMapping("/clientes/regiones")
 	public List<Region> regionslList() {
 		return customerService.findAllRegions();
