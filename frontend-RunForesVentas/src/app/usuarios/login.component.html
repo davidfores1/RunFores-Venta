@@ -10,9 +10,9 @@
   
       <!-- Login Form -->
       <form>
-        <input type="text" id="username" name="username" class="fadeIn second" placeholder="Usuario" autofocus required>
-        <input type="password" id="password" class="fadeIn third"  name="password" placeholder="Contraseña" required>
-        <input type="submit" class="fadeIn fourth" value="Login">
+        <input [(ngModel)]="usuario.username" type="text" id="username" name="username" class="fadeIn second" placeholder="Usuario" autofocus required>
+        <input [(ngModel)]="usuario.password" type="password" id="password" class="fadeIn third"  name="password" placeholder="Contraseña" required>
+        <input (click)="login()" type="submit" class="fadeIn fourth" value="Login">
       </form>
   
       <!-- Remind Passowrd -->
