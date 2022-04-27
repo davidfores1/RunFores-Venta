@@ -4,6 +4,7 @@ import { CustomersComponent } from './customers/customers.component';
 import { FormComponent } from './customers/form/form.component';
 import { LoginComponent } from './usuarios/login.component';
 
+
 const routes:Routes =[
 
   {path: '', redirectTo: '/clientes', pathMatch: 'full'},

@@ -9,4 +9,13 @@ export class AppComponent {
   title = 'RunFores';
 
   usuarioLogin:boolean = false;
+
+  ngOnInit(): void {
+
+    // if(sessionStorage.getItem('token')){
+    //   this.usuarioLogin = true;
+    // }
+
+  }
+
 }

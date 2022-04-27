@@ -13,7 +13,7 @@ import { Region } from '../models/region';
 })
 export class CustomeService {
 
-  private httpHeaders = new HttpHeaders({ 'content-Type': 'application/json' })
+
   private routeCliente = "/clientes/";
 
   constructor(private http: HttpClient, private router: Router) { }
@@ -59,7 +59,7 @@ export class CustomeService {
   }
 
   create(customer: Customer): Observable<any> {
-    return this.http.post<any>(environment.apiUrl + this.routeCliente, customer, { headers: this.httpHeaders }).pipe(
+    return this.http.post<any>(environment.apiUrl + this.routeCliente, customer, { headers: environment.httpHeaders }).pipe(
       catchError(e => {
 
         if(this.isNOAutorizado(e)){
@@ -78,7 +78,7 @@ export class CustomeService {
   }
 
   update(customer: Customer): Observable<any> {
-    return this.http.put<any>(`${environment.apiUrl}${this.routeCliente}${customer.id}`, customer, { headers: this.httpHeaders }).pipe(
+    return this.http.put<any>(`${environment.apiUrl}${this.routeCliente}${customer.id}`, customer, { headers: environment.httpHeaders }).pipe(
       catchError(e => {
 
         if(this.isNOAutorizado(e)){
@@ -97,7 +97,7 @@ export class CustomeService {
   }
 
   delete(id: number): Observable<Customer> {
-    return this.http.delete<Customer>(`${environment.apiUrl}${this.routeCliente}${id}`, { headers: this.httpHeaders }).pipe(
+    return this.http.delete<Customer>(`${environment.apiUrl}${this.routeCliente}${id}`, { headers: environment.httpHeaders }).pipe(
       catchError(e => {
 
         if(this.isNOAutorizado(e)){
