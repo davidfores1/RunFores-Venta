@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AuthService } from './services/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -9,6 +10,8 @@ export class AppComponent {
   title = 'RunFores';
 
   usuarioLogin:boolean = false;
+
+  constructor(public authService:AuthService){}
 
   ngOnInit(): void {
 

@@ -14,7 +14,18 @@
         </li>
       </ul>
       <ul class="navbar-nav navbar-right">
-        <li> <a [routerLink]="['/login']" class="btn btn-success">Salir</a></li>
+        
+        <li class="dropdown show">
+
+          <a class="btn btn-info dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <div class="circulo"></div>
+            {{authService.usuario.username}}
+          </a>
+        
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuLink" style="min-width:6.2rem">
+            <button (click)="logout()" class="dropdown-item" type="submit">Salir</button>
+          </div>
+        </li>
       </ul>
     </div>
   </nav>

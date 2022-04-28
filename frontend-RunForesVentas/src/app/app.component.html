@@ -1,4 +1,4 @@
-<!-- <div *ngIf="usuarioLogin; else showLogin"> -->
+<div *ngIf="authService.isAuthenticated(); else showLogin">
 
   <app-header></app-header>
   <div class="container-fluid my3 pb-3">
@@ -10,8 +10,8 @@
   </div>
   <app-footer></app-footer>
 
-<!-- </div>
+</div>
 
 <ng-template #showLogin>
   <app-login></app-login> 
-</ng-template> -->
+</ng-template>

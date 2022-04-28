@@ -86,4 +86,24 @@ export class AuthService {
     return null;
   }
 
+  isAuthenticated():boolean{
+
+    let payload = this.obtenerDatosToken(this.token);
+
+    if(payload != null && payload.user_name && payload.user_name.length>0){
+      return true;
+    }
+
+    return false;
+  }
+
+  logoutService(){
+
+    this._token = null;
+    this._usuario = null;
+
+    sessionStorage.clear();
+
+  }
+
 }

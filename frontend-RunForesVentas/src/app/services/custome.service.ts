@@ -7,6 +7,7 @@ import { environment } from 'src/environments/environment';
 import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
 import { Region } from '../models/region';
+import { AuthService } from './auth.service';
 
 @Injectable({
   providedIn: 'root'
@@ -16,11 +17,12 @@ export class CustomeService {
 
   private routeCliente = "/clientes/";
 
-  constructor(private http: HttpClient, private router: Router) { }
+  constructor(private http: HttpClient, private router: Router, public authService:AuthService) { }
 
   private isNOAutorizado(e:any): boolean {
 
     if(e.status == 401 || e.status == 403){
+      this.authService.logoutService();
       this.router.navigate(['/login'])
       return true;
     }
