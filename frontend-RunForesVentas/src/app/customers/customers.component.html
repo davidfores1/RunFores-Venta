@@ -1,13 +1,9 @@
 <app-detail *ngIf="selectCustomer" [customer]="selectCustomer"></app-detail>
 
 <div class="card border-light mb-3 my-3">
-  <div class="card-header">     <button
-    class="btn btn-rounded btn-primary"
-    type="button"
-    [routerLink]="['/clientes/form']"
-  >
-    Crear Cliente
-  </button></div>
+  <div *ngIf="authService.hasRole('ROLE_ADMIN')" class="card-header"> <button class="btn btn-rounded btn-primary" type="button" [routerLink]="['/clientes/form']">
+      Crear Cliente
+    </button></div>
   <div class="card-body text-info">
 
     <div *ngIf="customers?.length == 0" class="alert alert-info">
@@ -23,25 +19,21 @@
           <th scope="col">Email</th>
           <th scope="col">Fecha de nacimiento</th>
           <th scope="col">Fecha de registro</th>
-          <th class="text-center">Acciones</th>
+          <th *ngIf="authService.hasRole('ROLE_ADMIN')" class="text-center">Acciones</th>
         </tr>
       </thead>
       <tbody>
         <tr *ngFor="let customer of customers; let i = index">
-          <th><button (click)="openModal(customer)"
-            class="btn btn-secondary btn-sm">{{ i + 1 }}</button></th>
+          <th><button (click)="openModal(customer)" class="btn btn-secondary btn-sm">{{ i + 1 }}</button></th>
           <td>{{ customer.document }}</td>
           <td>{{ customer.name }}</td>
           <td>{{ customer.phone }}</td>
           <td>{{ customer.email }}</td>
           <td>{{ customer.dateBirth }}</td>
           <td>{{ customer.createAt | date: "short" }}</td>
-          <td>
+          <td *ngIf="authService.hasRole('ROLE_ADMIN')">
             <div class="btn-group">
-              <button
-                [routerLink]="['/clientes/form', customer.id]"
-                class="btn btn-info mr-3"
-              >
+              <button [routerLink]="['/clientes/form', customer.id]" class="btn btn-info mr-3">
                 Editar
               </button>
               <button class="btn btn-danger" (click)="deleteCustomer(customer)">
@@ -52,6 +44,6 @@
         </tr>
       </tbody>
     </table>
-    <app-paginator *ngIf="paginator"[paginatorComponent] = 'paginator'> </app-paginator>
+    <app-paginator *ngIf="paginator" [paginatorComponent]='paginator'> </app-paginator>
   </div>
 </div>

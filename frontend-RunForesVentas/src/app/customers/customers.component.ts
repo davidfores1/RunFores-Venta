@@ -4,6 +4,7 @@ import Swal from 'sweetalert2';
 import { Customer } from '../models/customer';
 import { CustomeService } from '../services/custome.service';
 import { ModalService } from '../services/modal.service';
+import { AuthService } from '../services/auth.service';
 
 
 
@@ -18,7 +19,8 @@ export class CustomersComponent implements OnInit {
   paginator:any;
   selectCustomer!:Customer;
 
-  constructor(private customeService: CustomeService, private modalService:ModalService, private activatedRoute: ActivatedRoute) { }
+  constructor(private customeService: CustomeService, private modalService:ModalService,
+              private activatedRoute: ActivatedRoute, public authService:AuthService) { }
 
   ngOnInit(): void {
 

@@ -31,9 +31,15 @@ export class CustomeService {
 
   private isNOAutorizado(e:any): boolean {
 
-    if(e.status == 401 || e.status == 403){
-      this.authService.logoutService();
+    if(e.status == 401){
+
       this.router.navigate(['/login'])
+      return true;
+    }
+
+    if(e.status == 403){
+      Swal.fire('Acceso denegado', `Hola ${this.authService.usuario.username} no tienes acceso a este recurso!`, 'warning');
+      this.router.navigate(['/clientes'])
       return true;
     }
 
