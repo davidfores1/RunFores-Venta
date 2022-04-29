@@ -6,13 +6,16 @@ import { LoginComponent } from './usuarios/login.component';
 
 
 const routes:Routes =[
-
-  {path: '', redirectTo: '/clientes', pathMatch: 'full'},
+  
+  {path: '', component: CustomersComponent},
   {path: 'clientes', component: CustomersComponent},
   {path: 'clientes/form', component:FormComponent},
   {path: 'clientes/page/:page', component:CustomersComponent},
-  {path: 'clientes/form/:id', component:FormComponent}
-
+  {path: 'clientes/form/:id', component:FormComponent},
+  {
+    path: '**',
+    redirectTo: 'clientes'
+  }
 ];
 
 @NgModule({
