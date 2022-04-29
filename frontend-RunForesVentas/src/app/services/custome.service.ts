@@ -17,7 +17,17 @@ export class CustomeService {
 
   private routeCliente = "/clientes/";
 
-  constructor(private http: HttpClient, private router: Router, public authService:AuthService) { }
+  constructor(private http: HttpClient, private router: Router, 
+    public authService:AuthService) { }
+
+  private agregarAuthorizationHeader(){
+
+    let token = this.authService.token;
+    if(token != null){
+      return environment.httpHeaders.append('Authorization', 'bearer ' + token);
+    }
+      return environment.httpHeaders;
+  }
 
   private isNOAutorizado(e:any): boolean {
 
@@ -46,7 +56,7 @@ export class CustomeService {
   }
 
   getCustomer(id: any): Observable<Customer> {
-    return this.http.get<Customer>(`${environment.apiUrl}${this.routeCliente}${id}`).pipe(
+    return this.http.get<Customer>(`${environment.apiUrl}${this.routeCliente}${id}`, {headers: this.agregarAuthorizationHeader()}).pipe(
       catchError(e => {
 
         if(this.isNOAutorizado(e)){
@@ -61,7 +71,7 @@ export class CustomeService {
   }
 
   create(customer: Customer): Observable<any> {
-    return this.http.post<any>(environment.apiUrl + this.routeCliente, customer, { headers: environment.httpHeaders }).pipe(
+    return this.http.post<any>(environment.apiUrl + this.routeCliente, customer, {headers: this.agregarAuthorizationHeader()}).pipe(
       catchError(e => {
 
         if(this.isNOAutorizado(e)){
@@ -80,7 +90,7 @@ export class CustomeService {
   }
 
   update(customer: Customer): Observable<any> {
-    return this.http.put<any>(`${environment.apiUrl}${this.routeCliente}${customer.id}`, customer, { headers: environment.httpHeaders }).pipe(
+    return this.http.put<any>(`${environment.apiUrl}${this.routeCliente}${customer.id}`, customer, {headers: this.agregarAuthorizationHeader()}).pipe(
       catchError(e => {
 
         if(this.isNOAutorizado(e)){
@@ -99,7 +109,7 @@ export class CustomeService {
   }
 
   delete(id: number): Observable<Customer> {
-    return this.http.delete<Customer>(`${environment.apiUrl}${this.routeCliente}${id}`, { headers: environment.httpHeaders }).pipe(
+    return this.http.delete<Customer>(`${environment.apiUrl}${this.routeCliente}${id}`, {headers: this.agregarAuthorizationHeader()}).pipe(
       catchError(e => {
 
         if(this.isNOAutorizado(e)){
@@ -119,8 +129,18 @@ export class CustomeService {
     formData.append("file", file)
     formData.append("id", id);
 
+    let httpHeaders = new HttpHeaders();
+    let token = this.authService.token;
+    if(token != null){
+      httpHeaders = httpHeaders.append('Authorization', 'Bearer ' + token);
+    }
+
+    console.log(httpHeaders);
+    
+
     const req = new HttpRequest('POST', `${environment.apiUrl}${this.routeCliente}upload/`, formData, {
-      reportProgress: true
+      reportProgress: true,
+      headers: httpHeaders
     });
 
     return this.http.request(req).pipe(
@@ -133,7 +153,9 @@ export class CustomeService {
 
   getRegions(): Observable<Region[]> {
 
-    return this.http.get<Region[]>(environment.apiUrl + this.routeCliente + 'regiones').pipe(
+    return this.http.get<Region[]>(environment.apiUrl + this.routeCliente + 'regiones', 
+                                   {headers: this.agregarAuthorizationHeader()}).pipe(
+
       catchError(e => {
         this.isNOAutorizado(e);
         return throwError(e);

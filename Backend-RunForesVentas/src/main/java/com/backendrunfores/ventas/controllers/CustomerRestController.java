@@ -47,7 +47,7 @@ public class CustomerRestController {
 	@GetMapping("/clientes/page/{page}")
 	public Page<Customer> index(@PathVariable Integer page) {
 
-		return customerService.findAll(PageRequest.of(page, 4));
+		return customerService.findAll(PageRequest.of(page, 5));
 	}
 
 	@Secured({"ROLE_ADMIN", "ROLE_USER"})
