@@ -33,6 +33,10 @@ export class CustomeService {
 
     if(e.status == 401){
 
+      if(this.authService.isAuthenticated()){
+        this.authService.logoutService();
+      }  
+
       this.router.navigate(['/login'])
       return true;
     }

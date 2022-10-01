@@ -3,12 +3,12 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Usuario } from '../usuarios/usuario';
 import { environment } from '../../environments/environment';
-import { NonNullAssert } from '@angular/compiler';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
+  
   private _usuario!: Usuario;
 
   private _token!: string;
