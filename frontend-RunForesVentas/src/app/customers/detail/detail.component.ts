@@ -56,7 +56,7 @@ export class DetailComponent implements OnInit {
         }else if(event.type === HttpEventType.Response){
           let response : any = event.body;
           this.customer = response.customer as Customer;
-          
+          this.modalService.notificarUpload.emit(this.customer);
           Swal.fire(
             'La foto se ha subido completamente!',
             `La foto se ha subido con éxito ${response.mensaje}`, 'success'

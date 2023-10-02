@@ -37,8 +37,16 @@ export class CustomersComponent implements OnInit {
           this.paginator = response; 
           
         });
-
     });
+
+    this.modalService.notificarUpload.subscribe(cliente =>{
+      this.customers = this.customers.map(clienteOriginal =>{
+        if(cliente.id == clienteOriginal.id){
+           clienteOriginal.photo = cliente.photo;
+        }
+        return clienteOriginal;
+      })
+    })
 
   }
 
