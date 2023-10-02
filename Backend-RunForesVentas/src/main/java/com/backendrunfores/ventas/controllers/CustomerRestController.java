@@ -5,6 +5,8 @@ import com.backendrunfores.ventas.models.entity.Region;
 import com.backendrunfores.ventas.models.services.ICustomerService;
 import com.backendrunfores.ventas.models.services.IUploadFileService;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
 import org.springframework.dao.DataAccessException;
@@ -21,6 +23,8 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.validation.Valid;
 import java.io.IOException;
 import java.net.MalformedURLException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -37,7 +41,7 @@ public class CustomerRestController {
 	@Autowired
 	private IUploadFileService uploadFileService;
 
-	//private final Logger log = LoggerFactory.getLogger(CustomerRestController.class);
+	private final Logger log = LoggerFactory.getLogger(CustomerRestController.class);
 
 	@GetMapping("/clientes")
 	public List<Customer> index() {
@@ -228,6 +232,8 @@ public class CustomerRestController {
 	@GetMapping("/uploads/img/{phoneName:.+}")
 	public ResponseEntity<Resource> seePhoto(@PathVariable String phoneName) {
 
+		Path rutaArchivo = Paths.get("uploads").resolve(phoneName).toAbsolutePath();
+		log.info(rutaArchivo.toString());
 		Resource resource = null;
 
 		try {
@@ -237,6 +243,19 @@ public class CustomerRestController {
 			e.printStackTrace();
 		}
 
+		if(!resource.exists() && !resource.isReadable()) {
+			rutaArchivo = Paths.get("src/main/resources/static/images").resolve("not_user.png").toAbsolutePath();
+			
+			try {
+				resource = uploadFileService.loadPhotoName(phoneName);
+			} catch (MalformedURLException e) {
+
+				e.printStackTrace();
+			}
+			
+			log.error("Error no se pudo cargar la imagen: " +phoneName);
+		}
+		
 		HttpHeaders cabecera = new HttpHeaders();
 		cabecera.add(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + resource.getFilename() + "\"");
 

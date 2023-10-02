@@ -25,8 +25,8 @@ INSERT INTO customers (create_at, date_birth, document, email, name, phone, phot
 
 INSERT INTO customers (create_at, date_birth, document, email, name, phone, photo, update_at, region_id) VALUES (to_timestamp('24/03/2022 10:16:21,088000000 PM','DD/MM/YYYY HH12:MI:SSXFF AM'),to_date('19/03/2022','DD/MM/YYYY'), '12345678', 'caroldd@hotmail.es', 'Carol Benitez', '3113067035', 'rcnjpg.jpg', null,8);
 
-INSERT INTO usuarios (username, password, enabled, nombre, apellido, email) VALUES ('andres','$2a$10$fVEKQ0t6ZlfPgkrgcJIw4uQBz3SDDYAfmfJwSBklXYboLh.3kStle',1, 'Andres','Guzman','andres12@gmail.com');
-INSERT INTO usuarios (username, password, enabled, nombre, apellido, email) VALUES ('admin','$2a$10$.RN/mHBGLW1Q3Hkl6cnYnugDCcb9FXQ7VoJlCUpyfNE5YifzQwwPC',1, 'David','Forero','david717@hotmail.es');
+INSERT INTO usuarios (username, password, enabled, nombre, apellido, email) VALUES ('andres','$2a$10$LUSzJgfj0xmPkDbPw3RCuOor42fCaNisbbnqdu6fzU3VgTpCvYZM6',1, 'Andres','Guzman','andres12@gmail.com');
+INSERT INTO usuarios (username, password, enabled, nombre, apellido, email) VALUES ('admin','$2a$10$f2fmAXn0xO4CCUQCb/soc.kIBW4TIDnsHNSnplQd4HCrIOHHXmZNy',1, 'David','Forero','david717@hotmail.es');
 
 insert into roles(nombre)values('ROLE_USER');
 insert into roles(nombre)values('ROLE_ADMIN');

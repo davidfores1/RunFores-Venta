@@ -21,7 +21,7 @@ public class BackendRunForesVentasApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 
-		String password = "12345";
+		String password = "david123";
 		
 		for (int i = 0; i < 4; i++) {
 			
